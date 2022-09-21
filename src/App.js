@@ -2,9 +2,8 @@ import * as React from "react";
 import Map, { Source, Layer } from "react-map-gl";
 
 function App() {
-	const long = -87.621;
-	const lat = 41.874;
-
+	const long = -123.137414;
+	const lat = 49.163168;
 	const geojson = {
 		type: "FeatureCollection",
 		features: [
@@ -29,12 +28,12 @@ function App() {
 			<Map
 				mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
 				initialViewState={{
-					longitude: -87.621,
-					latitude: 41.874,
-					zoom: 14,
+					longitude: long,
+					latitude: lat,
+					zoom: 12,
 				}}
 				style={{ width: 600, height: 400 }}
-				mapStyle="mapbox://styles/curtiswarcup/cl8c2ly0s000u15mjwaive8g8"
+				mapStyle="mapbox://styles/curtiswarcup/cl8c8zo7h000314qno3pumnrz"
 			>
 				<Source type="geojson" data={geojson}>
 					<Layer {...layerStyle} />
