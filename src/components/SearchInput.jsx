@@ -1,12 +1,12 @@
 import { useState, useContext } from "react";
-import { UserContext } from "../helpers/context";
+import { UserContext, SearchContext } from "../helpers/context";
 import axios from "axios";
 
 const SearchInput = () => {
 	const [search, setSearch] = useState("");
-	const [results, setResults] = useState([]);
 
 	const { user } = useContext(UserContext);
+	const { searchResults, setSearchResults } = useContext(SearchContext);
 
 	// setSearch is called when the user types in the search bar
 	const handleSearch = (e) => {
@@ -28,7 +28,7 @@ const SearchInput = () => {
 		axios(request)
 			.then(function (response) {
 				console.log(JSON.stringify(response.data));
-				setResults(response.data.features);
+				setSearchResults(response.data.features);
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -39,7 +39,7 @@ const SearchInput = () => {
 		<>
 			<input type="text" value={search} onChange={handleSearch} />
 			<button onClick={() => handleSearchSubmit()}>Search</button>
-			{results.map((result) => {
+			{searchResults.map((result) => {
 				return (
 					<div key={result.id}>
 						<p>{result.place_name}</p>

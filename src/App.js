@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { UserContext, ViewContext } from "./helpers/context";
+import { UserContext, ViewContext, SearchContext } from "./helpers/context";
 import MapMain from "./components/MapMain";
 import SearchInput from "./components/SearchInput";
 
@@ -11,12 +11,16 @@ function App() {
 		zoom: 10,
 	});
 
+	const [searchResults, setSearchResults] = useState([]);
+
 	return (
 		<>
 			<UserContext.Provider value={{ user, setUser }}>
 				<ViewContext.Provider value={{ viewState, setViewState }}>
-					<MapMain />
-					<SearchInput />
+					<SearchContext.Provider value={{ searchResults, setSearchResults }}>
+						<MapMain />
+						<SearchInput />
+					</SearchContext.Provider>
 				</ViewContext.Provider>
 			</UserContext.Provider>
 		</>
