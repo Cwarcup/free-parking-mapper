@@ -8,6 +8,8 @@ const UserLayer = () => {
 	// for initial map state, if no user location
 	const { viewState, setViewState } = useContext(ViewContext);
 
+	const [userLocationFetched, setUserLocationFetched] = useState(false);
+
 	// used for user location
 	const [geojson, setGeojson] = useState(null);
 
@@ -17,30 +19,35 @@ const UserLayer = () => {
 		navigator.geolocation.getCurrentPosition((position) => {
 			// set user location
 			setUser({
-				longitude: position.coords.longitude,
 				latitude: position.coords.latitude,
+				longitude: position.coords.longitude,
 			});
 			// set map center to user location
 			setViewState({
+				...viewState,
 				latitude: position.coords.latitude,
 				longitude: position.coords.longitude,
 			});
-		});
 
-		// set the geojson for the user location, used for the circle layer
-		setGeojson({
-			type: "FeatureCollection",
-			features: [
-				{
-					type: "Feature",
-					geometry: {
-						type: "Point",
-						coordinates: [viewState.longitude, viewState.latitude],
+			setGeojson({
+				type: "FeatureCollection",
+				features: [
+					{
+						type: "Feature",
+						geometry: {
+							type: "Point",
+							coordinates: [
+								position.coords.longitude,
+								position.coords.latitude,
+							],
+						},
 					},
-				},
-			],
+				],
+			});
+			setUserLocationFetched(true);
 		});
-	}, []);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [userLocationFetched]);
 
 	// for map layer - represents where the user is
 	const userCircleStyle = {
@@ -52,10 +59,16 @@ const UserLayer = () => {
 		},
 	};
 
+	console.log("user", user);
+	console.log("viewState", viewState);
+	console.log("geojson", geojson);
+	console.log("userLocationFetched", userLocationFetched);
 	return (
-		<Source type="geojson" data={geojson}>
-			<Layer {...userCircleStyle} />
-		</Source>
+		<>
+			<Source type="geojson" data={geojson}>
+				<Layer {...userCircleStyle} />
+			</Source>
+		</>
 	);
 };
 

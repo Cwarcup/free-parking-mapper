@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState, useRef } from "react";
-import Map, { Source, Layer, Marker } from "react-map-gl";
+import { useContext } from "react";
+import Map from "react-map-gl";
 import { UserContext, ViewContext } from "../helpers/context";
 import ParkingLayer from "./ParkingLayer";
 import UserLayer from "./UserLayer";
