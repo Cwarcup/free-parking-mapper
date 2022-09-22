@@ -46,6 +46,19 @@
 				"type": "LineString"
 			},
 			"id": "fc124994d3365f2c5392878b597a7881"
+		},
+		{
+			"type": "Feature",
+			"properties": {},
+			"geometry": {
+				"coordinates": [
+					[-123.191925, 49.16711],
+					[-123.190212, 49.166044],
+					[-123.192079, 49.166065]
+				],
+				"type": "LineString"
+			},
+			"id": "fc124994d3365f2c5392878b597a7882"
 		}
 	],
 	"type": "FeatureCollection"
