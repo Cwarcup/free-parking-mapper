@@ -59,10 +59,6 @@ const UserLayer = () => {
 		},
 	};
 
-	console.log("user", user);
-	console.log("viewState", viewState);
-	console.log("geojson", geojson);
-	console.log("userLocationFetched", userLocationFetched);
 	return (
 		<>
 			<Source type="geojson" data={geojson}>

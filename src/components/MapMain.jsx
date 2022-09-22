@@ -17,7 +17,7 @@ const MapMain = () => {
 				mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
 				{...viewState}
 				onMove={(evt) => setViewState(evt.viewState)}
-				style={{ width: "100vh", height: "100vh" }}
+				style={{ width: "500px", height: "500px" }}
 				mapStyle="mapbox://styles/mapbox/streets-v11"
 			>
 				<UserLayer />

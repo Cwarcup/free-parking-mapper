@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { UserContext, ViewContext } from "./helpers/context";
 import MapMain from "./components/MapMain";
+import SearchInput from "./components/SearchInput";
 
 function App() {
 	const [user, setUser] = useState(null);
@@ -15,6 +16,7 @@ function App() {
 			<UserContext.Provider value={{ user, setUser }}>
 				<ViewContext.Provider value={{ viewState, setViewState }}>
 					<MapMain />
+					<SearchInput />
 				</ViewContext.Provider>
 			</UserContext.Provider>
 		</>
