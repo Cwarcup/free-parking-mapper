@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState, useRef } from "react";
 import Map, { Source, Layer, Marker } from "react-map-gl";
 import { UserContext } from "../helpers/context";
+import mapDataPoints from "../helpers/data.json";
 
 const MapMain = () => {
+	console.log("mapDataPoints", mapDataPoints.features);
 	// for initial map state, if no user location
 	const [viewState, setViewState] = useState({
 		latitude: 49.16,
@@ -25,13 +27,27 @@ const MapMain = () => {
 		],
 	};
 
-	// for map layer - represents middle of map
-	const layerStyle = {
+	// for map layer - represents where the user is
+	const userCircle = {
 		id: "point",
 		type: "circle",
 		paint: {
 			"circle-radius": 10,
 			"circle-color": "#007cbf",
+		},
+	};
+
+	// represents parking locations
+	const demoLayer = {
+		id: "demo",
+		type: "fill",
+		paint: {
+			"fill-color": "#088",
+			"fill-opacity": 0.8,
+		},
+		source: {
+			type: "geojson",
+			data: mapDataPoints,
 		},
 	};
 
@@ -64,11 +80,13 @@ const MapMain = () => {
 				{...viewState}
 				onMove={(evt) => setViewState(evt.viewState)}
 				style={{ width: 600, height: 400 }}
-				mapStyle="mapbox://styles/curtiswarcup/cl8c8zo7h000314qno3pumnrz"
+				mapStyle="mapbox://styles/mapbox/streets-v11"
 			>
-				<Marker longitude={-123.13} latitude={49.16} color="red" />
 				<Source type="geojson" data={geojson}>
-					<Layer {...layerStyle} />
+					<Layer {...userCircle} />
+				</Source>
+				<Source type="geojson" data={mapDataPoints}>
+					<Layer {...demoLayer} />
 				</Source>
 			</Map>
 		</>
