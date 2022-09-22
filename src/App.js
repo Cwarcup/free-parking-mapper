@@ -1,10 +1,15 @@
-import * as React from "react";
+import { useState } from "react";
+import { UserContext } from "./helpers/context";
 import MapMain from "./components/MapMain";
 
 function App() {
+	const [user, setUser] = useState(null);
+
 	return (
 		<>
-			<MapMain />
+			<UserContext.Provider value={{ user, setUser }}>
+				<MapMain />
+			</UserContext.Provider>
 		</>
 	);
 }

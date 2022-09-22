@@ -1,7 +1,9 @@
-import React from "react";
+import { useContext } from "react";
 import Map, { Source, Layer } from "react-map-gl";
+import { UserContext } from "../helpers/context";
 
 const MapMain = () => {
+	const { user, setUser } = useContext(UserContext);
 	// for initial map state
 	const long = -123.137414;
 	const lat = 49.163168;
