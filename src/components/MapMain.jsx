@@ -2,6 +2,7 @@ import { useContext, useEffect, useState, useRef } from "react";
 import Map, { Source, Layer, Marker } from "react-map-gl";
 import { UserContext } from "../helpers/context";
 import mapDataPoints from "../helpers/data.json";
+import noParkingData from "../helpers/no-parking.json";
 
 const MapMain = () => {
 	console.log("mapDataPoints", mapDataPoints.features);
@@ -51,6 +52,19 @@ const MapMain = () => {
 		},
 	};
 
+	const noParkingLayer = {
+		id: "no-parking",
+		type: "fill",
+		paint: {
+			"fill-color": "#f00",
+			"fill-opacity": 0.8,
+		},
+		source: {
+			type: "geojson",
+			data: noParkingData,
+		},
+	};
+
 	// on first load, request to get user geolocation
 	// and set user state to that location
 	if (!user) {
@@ -79,7 +93,7 @@ const MapMain = () => {
 				mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
 				{...viewState}
 				onMove={(evt) => setViewState(evt.viewState)}
-				style={{ width: 600, height: 400 }}
+				style={{ width: "100vh", height: "100vh" }}
 				mapStyle="mapbox://styles/mapbox/streets-v11"
 			>
 				<Source type="geojson" data={geojson}>
@@ -87,6 +101,9 @@ const MapMain = () => {
 				</Source>
 				<Source type="geojson" data={mapDataPoints}>
 					<Layer {...demoLayer} />
+				</Source>
+				<Source type="geojson" data={noParkingData}>
+					<Layer {...noParkingLayer} />
 				</Source>
 			</Map>
 		</>
