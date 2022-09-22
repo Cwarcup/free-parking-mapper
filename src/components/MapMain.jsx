@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, useRef } from "react";
-import Map, { Source, Layer } from "react-map-gl";
+import Map, { Source, Layer, Marker } from "react-map-gl";
 import { UserContext } from "../helpers/context";
 
 const MapMain = () => {
@@ -66,6 +66,7 @@ const MapMain = () => {
 				style={{ width: 600, height: 400 }}
 				mapStyle="mapbox://styles/curtiswarcup/cl8c8zo7h000314qno3pumnrz"
 			>
+				<Marker longitude={-123.13} latitude={49.16} color="red" />
 				<Source type="geojson" data={geojson}>
 					<Layer {...layerStyle} />
 				</Source>
