@@ -1,18 +1,17 @@
 import { useState, useContext } from "react";
-import { UserContext, SearchContext } from "../helpers/context";
+import { ViewContext, SearchContext } from "../helpers/context";
 import axios from "axios";
 
 const SearchInput = () => {
-	const [search, setSearch] = useState("");
-
-	const { user } = useContext(UserContext);
+	const { viewState } = useContext(ViewContext);
 	const { searchResults, setSearchResults } = useContext(SearchContext);
+
+	// used for get request
+	const [search, setSearch] = useState("");
 
 	// setSearch is called when the user types in the search bar
 	const handleSearch = (e) => {
-		// use debounce to prevent too many requests
 		setSearch(e.target.value);
-		console.log("search", search);
 	};
 
 	// make axios request when button is clicked
@@ -21,33 +20,36 @@ const SearchInput = () => {
 
 		let request = {
 			method: "get",
-			url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${search}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}&proximity=${user.longitude},${user.latitude}`,
+			url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${search}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}&proximity=${viewState.longitude},${viewState.latitude}`,
 			headers: {},
 		};
 
 		axios(request)
 			.then(function (response) {
 				console.log(JSON.stringify(response.data));
-				setSearchResults(response.data.features);
+				setSearchResults(response.data);
 			})
 			.catch(function (error) {
 				console.log(error);
 			});
 	};
 
+	console.log(searchResults);
+
 	return (
 		<>
 			<input type="text" value={search} onChange={handleSearch} />
 			<button onClick={() => handleSearchSubmit()}>Search</button>
-			{searchResults.map((result) => {
-				return (
-					<div key={result.id}>
-						<p>{result.place_name}</p>
-						<p>{result.center}</p>
-						<p>{result.geometry.coordinates}</p>
-					</div>
-				);
-			})}
+			{searchResults &&
+				searchResults.features.map((result) => {
+					return (
+						<div key={result.id}>
+							<p>{result.place_name}</p>
+							<p>{result.center}</p>
+							<p>{result.geometry.coordinates}</p>
+						</div>
+					);
+				})}
 		</>
 	);
 };

@@ -11,7 +11,7 @@ function App() {
 		zoom: 10,
 	});
 
-	const [searchResults, setSearchResults] = useState([]);
+	const [searchResults, setSearchResults] = useState(false);
 
 	return (
 		<>

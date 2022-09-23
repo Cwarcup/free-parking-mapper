@@ -1,15 +1,19 @@
 import { useContext } from "react";
 import Map from "react-map-gl";
-import { UserContext, ViewContext } from "../helpers/context";
+import { ViewContext, SearchContext } from "../helpers/context";
 import ParkingLayer from "./ParkingLayer";
 import UserLayer from "./UserLayer";
 
 import freeParkingData from "../helpers/free-parking-data.json";
 import noParkingData from "../helpers/no-parking.json";
 
+import SearchLayer from "./SearchLayer";
+
 const MapMain = () => {
-	const { user, setUser } = useContext(UserContext);
 	const { viewState, setViewState } = useContext(ViewContext);
+	const { searchResults } = useContext(SearchContext);
+
+	console.log(searchResults);
 
 	return (
 		<>
@@ -39,6 +43,10 @@ const MapMain = () => {
 					}}
 					id={"no-parking"}
 				/>
+
+				{searchResults && searchResults.features.length > 0 && (
+					<SearchLayer data={searchResults} />
+				)}
 			</Map>
 		</>
 	);
