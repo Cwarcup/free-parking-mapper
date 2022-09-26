@@ -9,6 +9,8 @@ import noParkingData from "../helpers/no-parking.json";
 
 import SearchLayer from "./SearchLayer";
 
+import MeterMarker from "./MeterMarker";
+
 const MapMain = () => {
 	const { viewState, setViewState } = useContext(ViewContext);
 	const { searchResults } = useContext(SearchContext);
@@ -48,6 +50,7 @@ const MapMain = () => {
 					<SearchLayer data={searchResults} />
 				)}
 			</Map>
+
 		</>
 	);
 };
