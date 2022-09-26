@@ -49,8 +49,8 @@ const MapMain = () => {
 				{searchResults && searchResults.features.length > 0 && (
 					<SearchLayer data={searchResults} />
 				)}
+				<MeterMarker />
 			</Map>
-
 		</>
 	);
 };
