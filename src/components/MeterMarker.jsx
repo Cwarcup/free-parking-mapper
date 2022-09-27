@@ -18,20 +18,22 @@ const MeterMarker = () => {
 
 	// useEffect to get data from api
 	useEffect(() => {
-		getParkingMeters(viewState.latitude, viewState.longitude).then((res) => {
-			setData(res);
-			setMarker(
-				data.map((meter, index) => {
-					return (
-						<Marker
-							key={index}
-							latitude={meter.fields.geom.coordinates[1]}
-							longitude={meter.fields.geom.coordinates[0]}
-						></Marker>
-					);
-				})
-			);
-		});
+		getParkingMeters(viewState.latitude, viewState.longitude, 1000, ).then(
+			(res) => {
+				setData(res);
+				setMarker(
+					data.map((meter, index) => {
+						return (
+							<Marker
+								key={index}
+								latitude={meter.fields.geom.coordinates[1]}
+								longitude={meter.fields.geom.coordinates[0]}
+							></Marker>
+						);
+					})
+				);
+			}
+		);
 	}, [searchResults]);
 
 	console.log("data", data);

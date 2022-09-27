@@ -6,10 +6,13 @@
 
 import axios from "axios";
 
-const getParkingMeters = (lat, long, distance = "500") => {
+// distance is in meters, is the radius of the circle from the center of the viewport
+// rows is the number of parking meters to return
+
+const getParkingMeters = (lat, long, distance = "500", rows = "50") => {
 	return axios
 		.get(
-			`https://opendata.vancouver.ca/api/records/1.0/search/?dataset=parking-meters&q=&rows=10&facet=r_mf_9a_6p&facet=r_mf_6p_10&facet=r_sa_9a_6p&facet=r_sa_6p_10&facet=r_su_9a_6p&facet=r_su_6p_10&facet=timeineffe&facet=t_mf_9a_6p&facet=t_mf_6p_10&facet=t_sa_9a_6p&facet=t_sa_6p_10&facet=t_su_9a_6p&facet=t_su_6p_10&facet=creditcard&facet=geo_local_area&geofilter.distance=${lat}%2C${long}%2C+${distance}`
+			`https://opendata.vancouver.ca/api/records/1.0/search/?dataset=parking-meters&q=&rows=${rows}&facet=r_mf_9a_6p&facet=r_mf_6p_10&facet=r_sa_9a_6p&facet=r_sa_6p_10&facet=r_su_9a_6p&facet=r_su_6p_10&facet=timeineffe&facet=t_mf_9a_6p&facet=t_mf_6p_10&facet=t_sa_9a_6p&facet=t_sa_6p_10&facet=t_su_9a_6p&facet=t_su_6p_10&facet=creditcard&facet=geo_local_area&geofilter.distance=${lat}%2C${long}%2C+${distance}`
 		)
 		.then((res) => {
 			return res.data.records;
