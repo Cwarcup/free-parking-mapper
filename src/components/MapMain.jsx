@@ -49,7 +49,7 @@ const MapMain = () => {
 				{searchResults && searchResults.features.length > 0 && (
 					<SearchLayer data={searchResults} />
 				)}
-				<MeterMarker />
+				<MeterMarker distance={"500"} rows={"50"} />
 			</Map>
 		</>
 	);

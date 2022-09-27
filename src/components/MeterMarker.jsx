@@ -1,57 +1,37 @@
-import Map, { Marker } from "react-map-gl";
-import ParkingMeters from "../helpers/parking-meters.json";
+import { Marker } from "react-map-gl";
 import { useContext } from "react";
-import { ViewContext, SearchContext } from "../helpers/context";
-import getParkingMeters from "../helpers/vanDataFetcher";
+import { ViewContext } from "../helpers/context";
+import getParkingMeters from "../helpers/getParkingMeters";
 import { useEffect, useState } from "react";
 
-const MeterMarker = () => {
-	const { viewState } = useContext(ViewContext);
-	console.log(viewState);
-	const { searchResults } = useContext(SearchContext);
-
-	const [data, setData] = useState([]);
-	const [marker, setMarker] = useState([]);
-
+const MeterMarker = ({ distance, rows }) => {
 	// data.fields.geom.coordinates[0] = longitude
 	// data.fields.geom.coordinates[1] = latitude
 
-	// useEffect to get data from api
+	const { viewState } = useContext(ViewContext);
+	const [marker, setMarker] = useState([]);
+
 	useEffect(() => {
-		getParkingMeters(viewState.latitude, viewState.longitude, 1000, ).then(
-			(res) => {
-				setData(res);
-				setMarker(
-					data.map((meter, index) => {
-						return (
-							<Marker
-								key={index}
-								latitude={meter.fields.geom.coordinates[1]}
-								longitude={meter.fields.geom.coordinates[0]}
-							></Marker>
-						);
-					})
-				);
-			}
-		);
-	}, [searchResults]);
-
-	console.log("data", data);
-
-	// only want to render markers if data is available
-	// if (data.length > 0) {
-	// 	setMarker(
-	// 		data.map((meter, index) => {
-	// 			return (
-	// 				<Marker
-	// 					key={index}
-	// 					latitude={meter.fields.geom.coordinates[1]}
-	// 					longitude={meter.fields.geom.coordinates[0]}
-	// 				></Marker>
-	// 			);
-	// 		})
-	// 	);
-	// }
+		getParkingMeters(
+			viewState.latitude,
+			viewState.longitude,
+			distance,
+			rows
+		).then((res) => {
+			setMarker(
+				res.data.records.map((meter, index) => {
+					return (
+						<Marker
+							key={index}
+							latitude={meter.fields.geom.coordinates[1]}
+							longitude={meter.fields.geom.coordinates[0]}
+						></Marker>
+					);
+				})
+			);
+		});
+		// updates when viewState changes
+	}, [viewState]);
 
 	return <>{marker}</>;
 };
