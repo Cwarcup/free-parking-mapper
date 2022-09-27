@@ -1,29 +1,55 @@
 import Map, { Marker } from "react-map-gl";
 import ParkingMeters from "../helpers/parking-meters.json";
 import { useContext } from "react";
-import { ViewContext } from "../helpers/context";
+import { ViewContext, SearchContext } from "../helpers/context";
+import getParkingMeters from "../helpers/vanDataFetcher";
+import { useEffect, useState } from "react";
 
 const MeterMarker = () => {
 	const { viewState } = useContext(ViewContext);
+	console.log(viewState);
+	const { searchResults } = useContext(SearchContext);
 
-	const marker = ParkingMeters.map((item, index) => {
-		// console.log(item.fields.geom);
-		// only show markers that are within the current viewport
-		if (
-			item.fields.geom.coordinates[0] > viewState.longitude - 0.01 &&
-			item.fields.geom.coordinates[0] < viewState.longitude + 0.01 &&
-			item.fields.geom.coordinates[1] > viewState.latitude - 0.01 &&
-			item.fields.geom.coordinates[1] < viewState.latitude + 0.01
-		) {
-			return (
-				<Marker
-					key={index}
-					latitude={item.fields.geom.coordinates[1]}
-					longitude={item.fields.geom.coordinates[0]}
-				/>
+	const [data, setData] = useState([]);
+	const [marker, setMarker] = useState([]);
+
+	// data.fields.geom.coordinates[0] = longitude
+	// data.fields.geom.coordinates[1] = latitude
+
+	// useEffect to get data from api
+	useEffect(() => {
+		getParkingMeters(viewState.latitude, viewState.longitude).then((res) => {
+			setData(res);
+			setMarker(
+				data.map((meter, index) => {
+					return (
+						<Marker
+							key={index}
+							latitude={meter.fields.geom.coordinates[1]}
+							longitude={meter.fields.geom.coordinates[0]}
+						></Marker>
+					);
+				})
 			);
-		}
-	});
+		});
+	}, [searchResults]);
+
+	console.log("data", data);
+
+	// only want to render markers if data is available
+	// if (data.length > 0) {
+	// 	setMarker(
+	// 		data.map((meter, index) => {
+	// 			return (
+	// 				<Marker
+	// 					key={index}
+	// 					latitude={meter.fields.geom.coordinates[1]}
+	// 					longitude={meter.fields.geom.coordinates[0]}
+	// 				></Marker>
+	// 			);
+	// 		})
+	// 	);
+	// }
 
 	return <>{marker}</>;
 };
