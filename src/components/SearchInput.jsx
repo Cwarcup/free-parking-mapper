@@ -26,15 +26,12 @@ const SearchInput = () => {
 
 		axios(request)
 			.then(function (response) {
-				console.log(JSON.stringify(response.data));
 				setSearchResults(response.data);
 			})
 			.catch(function (error) {
 				console.log(error);
 			});
 	};
-
-	console.log(searchResults);
 
 	return (
 		<>

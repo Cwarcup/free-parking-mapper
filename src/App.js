@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { UserContext, ViewContext, SearchContext } from "./helpers/context";
+import {
+	UserContext,
+	ViewContext,
+	SearchContext,
+	PopupInfoContext,
+} from "./helpers/context";
 import MapMain from "./components/MapMain";
 import SearchInput from "./components/SearchInput";
 
@@ -13,13 +18,17 @@ function App() {
 
 	const [searchResults, setSearchResults] = useState(false);
 
+	const [popupInfo, setPopupInfo] = useState(null);
+
 	return (
 		<>
 			<UserContext.Provider value={{ user, setUser }}>
 				<ViewContext.Provider value={{ viewState, setViewState }}>
 					<SearchContext.Provider value={{ searchResults, setSearchResults }}>
-						<MapMain />
-						<SearchInput />
+						<PopupInfoContext.Provider value={{ popupInfo, setPopupInfo }}>
+							<MapMain />
+							<SearchInput />
+						</PopupInfoContext.Provider>
 					</SearchContext.Provider>
 				</ViewContext.Provider>
 			</UserContext.Provider>
