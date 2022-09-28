@@ -4,6 +4,7 @@ import {
 	ViewContext,
 	SearchContext,
 	PopupInfoContext,
+	MarkerDataContext,
 } from "./helpers/context";
 import MapMain from "./components/MapMain";
 import SearchInput from "./components/SearchInput";
@@ -22,24 +23,30 @@ function App() {
 
 	const [popupInfo, setPopupInfo] = useState(null);
 
+	const [markerData, setMarkerData] = useState({ distance: 500, rows: 50 });
+
+	console.log(markerData);
+
 	return (
 		<>
 			<UserContext.Provider value={{ user, setUser }}>
 				<ViewContext.Provider value={{ viewState, setViewState }}>
 					<SearchContext.Provider value={{ searchResults, setSearchResults }}>
 						<PopupInfoContext.Provider value={{ popupInfo, setPopupInfo }}>
-							<SideBar />
-							<div className="flex h-full w-full flex-col">
-								<Navbar />
-								<div className="h-full overflow-hidden pl-10">
-									<main
-										id="dashboard-main"
-										className="h-[calc(100vh-10rem)] overflow-auto px-4 py-10"
-									>
-										<MapMain />
-									</main>
+							<MarkerDataContext.Provider value={{ markerData, setMarkerData }}>
+								<SideBar />
+								<div className="flex h-full w-full flex-col">
+									<Navbar />
+									<div className="h-full overflow-hidden pl-10">
+										<main
+											id="dashboard-main"
+											className="h-[calc(100vh-10rem)] overflow-auto px-4 py-10"
+										>
+											<MapMain />
+										</main>
+									</div>
 								</div>
-							</div>
+							</MarkerDataContext.Provider>
 						</PopupInfoContext.Provider>
 					</SearchContext.Provider>
 				</ViewContext.Provider>
