@@ -1,4 +1,5 @@
 import React from "react";
+import avatar from "../images/avatar.jpg";
 
 const SideBar = () => {
 	return (
@@ -31,9 +32,9 @@ const SideBar = () => {
 					<div className="bg-slate-800 mt-5 py-4 pl-10 md:mt-10">
 						<span className="">
 							<span className="mr-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 align-bottom text-2xl font-bold">
-								U
+								P
 							</span>
-							<span className="text-xl">rbane</span>
+							<span className="text-xl">arking Helper</span>
 						</span>
 					</div>
 					<ul className="mt-8 space-y-3 md:mt-20">
@@ -76,7 +77,7 @@ const SideBar = () => {
 										/>
 									</svg>{" "}
 								</span>
-								<span className="">Transaction</span>
+								<span className="">Meters</span>
 							</button>
 							<svg
 								className="text-slate-200 absolute -right-1 -top-1/2 z-10 hidden h-32 w-8 md:block"
@@ -90,78 +91,6 @@ const SideBar = () => {
 									d="M 499.289 57.696 C 499.289 171.989 399.349 196.304 399.349 257.333 C 399.349 322.485 499.512 354.485 499.512 458.767 C 499.512 483.155 499.289 57.696 499.289 57.696 Z"
 								/>
 							</svg>
-						</li>
-						<li className="relative">
-							<button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
-								<span>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										className="h-6 w-6"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-										stroke-width="2"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-										/>
-									</svg>
-								</span>
-								<span className="">Send Money</span>
-							</button>
-						</li>
-						<li className="relative">
-							<button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
-								<span className="text-2xl">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										aria-hidden="true"
-										role="img"
-										width="1em"
-										height="1em"
-										preserveAspectRatio="xMidYMid meet"
-										viewBox="0 0 36 36"
-									>
-										<path
-											fill="currentColor"
-											d="M32 15h-1V9a1 1 0 0 0-1-1H6a1 1 0 0 1-1-.82v-.36A1 1 0 0 1 6 6h23.58a1 1 0 0 0 0-2H6a3 3 0 0 0-3 3a3.08 3.08 0 0 0 0 .36v20.57A4.1 4.1 0 0 0 7.13 32H30a1 1 0 0 0 1-1v-6h1a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1Zm-3 15H7.13A2.11 2.11 0 0 1 5 27.93V9.88A3.11 3.11 0 0 0 6 10h23v5h-7a5 5 0 0 0 0 10h7Zm2-7h-9a3 3 0 0 1 0-6h9Z"
-											className="clr-i-outline clr-i-outline-path-1"
-										/>
-										<circle
-											cx="23.01"
-											cy="20"
-											r="1.5"
-											fill="currentColor"
-											className="clr-i-outline clr-i-outline-path-2"
-										/>
-										<path fill="none" d="M0 0h36v36H0z" />
-									</svg>
-								</span>
-								<span className="">Payments</span>
-							</button>
-						</li>
-						<li className="relative">
-							<button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
-								<span>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										className="h-6 w-6"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-										stroke-width="2"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-										/>
-									</svg>
-								</span>
-								<span className="">Cards</span>
-							</button>
 						</li>
 						<li className="relative">
 							<button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
@@ -195,12 +124,13 @@ const SideBar = () => {
 						<div>
 							<img
 								className="h-12 w-12 rounded-full"
-								src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+								src={avatar}
+								alt="avatar"
 							/>
 						</div>
 						<div className="ml-3">
-							<p className="font-medium">Diana Reeves</p>
-							<p className="text-sm text-gray-300">Kyiv, Ukraine</p>
+							<p className="font-medium">Curtis Warcup</p>
+							<p className="text-sm text-gray-300">Vancouver, Canada</p>
 						</div>
 					</div>
 				</nav>
