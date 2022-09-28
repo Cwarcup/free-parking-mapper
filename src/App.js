@@ -7,6 +7,7 @@ import {
 } from "./helpers/context";
 import MapMain from "./components/MapMain";
 import SearchInput from "./components/SearchInput";
+import SideBar from "./components/SideBar";
 
 function App() {
 	const [user, setUser] = useState(null);
@@ -22,13 +23,17 @@ function App() {
 
 	return (
 		<>
-			<h1 className="text-3xl font-bold underline">Hello world!</h1>
 			<UserContext.Provider value={{ user, setUser }}>
 				<ViewContext.Provider value={{ viewState, setViewState }}>
 					<SearchContext.Provider value={{ searchResults, setSearchResults }}>
 						<PopupInfoContext.Provider value={{ popupInfo, setPopupInfo }}>
-							<MapMain />
-							<SearchInput />
+							<div className="w-full md:w-4/5 bg-gray-100">
+								<div className="container bg-gray-100 pt-16 px-6">
+									<MapMain />
+									<SearchInput />
+								</div>
+							</div>
+							<SideBar />
 						</PopupInfoContext.Provider>
 					</SearchContext.Provider>
 				</ViewContext.Provider>
