@@ -22,6 +22,7 @@ function App() {
 
 	return (
 		<>
+			<h1 className="text-3xl font-bold underline">Hello world!</h1>
 			<UserContext.Provider value={{ user, setUser }}>
 				<ViewContext.Provider value={{ viewState, setViewState }}>
 					<SearchContext.Provider value={{ searchResults, setSearchResults }}>
