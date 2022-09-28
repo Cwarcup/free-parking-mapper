@@ -37,7 +37,6 @@ function App() {
 										className="h-[calc(100vh-10rem)] overflow-auto px-4 py-10"
 									>
 										<MapMain />
-										<SearchInput />
 									</main>
 								</div>
 							</div>
