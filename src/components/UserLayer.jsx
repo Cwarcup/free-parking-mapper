@@ -22,12 +22,6 @@ const UserLayer = () => {
 				latitude: position.coords.latitude,
 				longitude: position.coords.longitude,
 			});
-			// set map center to user location
-			setViewState({
-				...viewState,
-				latitude: position.coords.latitude,
-				longitude: position.coords.longitude,
-			});
 
 			setGeojson({
 				type: "FeatureCollection",

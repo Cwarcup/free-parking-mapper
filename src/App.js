@@ -13,9 +13,9 @@ import SideBar from "./components/SideBar";
 function App() {
 	const [user, setUser] = useState(null);
 	const [viewState, setViewState] = useState({
-		latitude: 49.16,
-		longitude: -123.13,
-		zoom: 10,
+		latitude: 49.2862711482359,
+		longitude: -123.12383482184555,
+		zoom: 12.343529451662485,
 	});
 
 	const [searchResults, setSearchResults] = useState(false);

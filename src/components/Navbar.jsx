@@ -1,7 +1,23 @@
 import React from "react";
 import SearchInput from "./SearchInput";
+import { useContext } from "react";
+import { ViewContext, UserContext } from "../helpers/context";
+import { BiCurrentLocation } from "react-icons/bi";
 
 const Navbar = () => {
+	const { viewState, setViewState } = useContext(ViewContext);
+	const { user } = useContext(UserContext);
+
+	const handleNewViewState = () => {
+		if (user) {
+			setViewState({
+				...viewState,
+				latitude: user.latitude,
+				longitude: user.longitude,
+			});
+		}
+	};
+
 	return (
 		<header className="relative flex flex-col items-center bg-white px-4 py-4 shadow sm:flex-row md:h-20">
 			<div className="flex w-full flex-col justify-between overflow-hidden transition-all sm:max-h-full sm:flex-row sm:items-center">
@@ -26,21 +42,14 @@ const Navbar = () => {
 
 				<ul className="mx-auto mt-4 flex space-x-6 sm:mx-5 sm:mt-0">
 					<li className="">
-						<button className="flex h-8 w-8 items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								className="h-5 w-5"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-								strokeWidth="2"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-								/>
-							</svg>
+						<button
+							className="flex h-8 w-8 items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow"
+							onClick={() => {
+								handleNewViewState();
+							}}
+							alt="Current Location"
+						>
+							<BiCurrentLocation />
 						</button>
 					</li>
 					<li className="">

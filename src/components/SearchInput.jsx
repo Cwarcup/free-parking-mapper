@@ -16,8 +16,6 @@ const SearchInput = () => {
 
 	// make axios request when button is clicked
 	const handleSearchSubmit = async () => {
-		console.log("search has been made");
-
 		let request = {
 			method: "get",
 			url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${search}.json?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}&proximity=${viewState.longitude},${viewState.latitude}`,

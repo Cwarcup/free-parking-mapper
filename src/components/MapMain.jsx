@@ -15,7 +15,8 @@ const MapMain = () => {
 	const { viewState, setViewState } = useContext(ViewContext);
 	const { searchResults } = useContext(SearchContext);
 	const { popupInfo, setPopupInfo } = useContext(PopupInfoContext);
-	console.log(popupInfo);
+
+	console.log("viewState", viewState);
 
 	return (
 		<>
