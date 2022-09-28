@@ -7,6 +7,7 @@ import {
 } from "./helpers/context";
 import MapMain from "./components/MapMain";
 import SearchInput from "./components/SearchInput";
+import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
 
 function App() {
@@ -27,13 +28,19 @@ function App() {
 				<ViewContext.Provider value={{ viewState, setViewState }}>
 					<SearchContext.Provider value={{ searchResults, setSearchResults }}>
 						<PopupInfoContext.Provider value={{ popupInfo, setPopupInfo }}>
-							<div className="w-full md:w-4/5 bg-gray-100">
-								<div className="container bg-gray-100 pt-16 px-6">
-									<MapMain />
-									<SearchInput />
+							<SideBar />
+							<div className="flex h-full w-full flex-col">
+								<Navbar />
+								<div className="h-full overflow-hidden pl-10">
+									<main
+										id="dashboard-main"
+										className="h-[calc(100vh-10rem)] overflow-auto px-4 py-10"
+									>
+										<MapMain />
+										<SearchInput />
+									</main>
 								</div>
 							</div>
-							<SideBar />
 						</PopupInfoContext.Provider>
 					</SearchContext.Provider>
 				</ViewContext.Provider>
