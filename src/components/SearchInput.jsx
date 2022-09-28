@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { ViewContext, SearchContext } from "../helpers/context";
 import axios from "axios";
+import { Input, Button, Container } from "@mui/material";
 
 const SearchInput = () => {
 	const { viewState } = useContext(ViewContext);
@@ -35,18 +36,28 @@ const SearchInput = () => {
 
 	return (
 		<>
-			<input type="text" value={search} onChange={handleSearch} />
-			<button onClick={() => handleSearchSubmit()}>Search</button>
-			{searchResults &&
-				searchResults.features.map((result) => {
-					return (
-						<div key={result.id}>
-							<p>{result.place_name}</p>
-							<p>{result.center}</p>
-							<p>{result.geometry.coordinates}</p>
-						</div>
-					);
-				})}
+			<Container maxWidth="xl">
+				<Input
+					type="text"
+					placeholder="Search a location"
+					value={search}
+					onChange={handleSearch}
+				/>
+				<Button variant="contained" onClick={handleSearchSubmit}>
+					Search
+				</Button>
+
+				{searchResults &&
+					searchResults.features.map((result) => {
+						return (
+							<div key={result.id}>
+								<p>{result.place_name}</p>
+								<p>{result.center}</p>
+								<p>{result.geometry.coordinates}</p>
+							</div>
+						);
+					})}
+			</Container>
 		</>
 	);
 };
