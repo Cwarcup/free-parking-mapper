@@ -16,16 +16,15 @@ import UserLayer from "./UserLayer";
 import SearchLayer from "./SearchLayer";
 import MeterMarker from "./MeterMarker";
 import { Container } from "@mui/material";
-import MeterTable from "./MeterTable";
 
 const MapMain = () => {
 	const { viewState, setViewState } = useContext(ViewContext);
 	const { searchResults } = useContext(SearchContext);
 	const { popupInfo, setPopupInfo } = useContext(PopupInfoContext);
 	const { markerData } = useContext(MarkerDataContext);
-	console.log(popupInfo);
 
 	const price = (data) => {
+		// clean up the data
 		let averagePrice = [
 			parseInt(data.r_mf_6p_10.replace(/\$/g, "")),
 			parseInt(data.r_mf_9a_6p.replace(/\$/g, "")),
@@ -61,6 +60,7 @@ const MapMain = () => {
 					<FullscreenControl position="top-left" />
 					<NavigationControl position="top-left" />
 					<ScaleControl />
+
 					<UserLayer />
 
 					{searchResults && searchResults.features.length > 0 && (
@@ -76,13 +76,13 @@ const MapMain = () => {
 							className="flex flex-col items-center rounded-3xl text-center p-3"
 						>
 							<div className="m-2">
-								<p class="mb-2 text-xl font-medium text-gray-100">
+								<p className="mb-2 text-xl font-medium text-gray-100">
 									{popupInfo.fields.geo_local_area}
 								</p>
-								<p class="text-gray-100">
+								<p className="text-gray-100">
 									PayByPhone: {popupInfo.fields.pay_phone}
 								</p>
-								<p class="text-gray-100">{price(popupInfo.fields)}</p>
+								<p className="text-gray-100">{price(popupInfo.fields)}</p>
 							</div>
 						</Popup>
 					)}

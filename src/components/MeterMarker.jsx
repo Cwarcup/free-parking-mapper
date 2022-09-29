@@ -7,9 +7,9 @@ import {
 } from "../helpers/context";
 import getParkingMeters from "../helpers/getParkingMeters";
 import { useEffect, useState } from "react";
+import { FaMapMarker } from "react-icons/fa";
 
 const MeterMarker = ({ distance, rows, popupFunction }) => {
-
 	const { viewState } = useContext(ViewContext);
 	const [marker, setMarker] = useState([]);
 	const { setPopupInfo } = useContext(PopupInfoContext);
@@ -35,7 +35,9 @@ const MeterMarker = ({ distance, rows, popupFunction }) => {
 								e.originalEvent.stopPropagation();
 								setPopupInfo(meter);
 							}}
-						></Marker>
+						>
+							<FaMapMarker size={45} className="fill-sky-500 drop-shadow-xl" />
+						</Marker>
 					);
 				})
 			);
