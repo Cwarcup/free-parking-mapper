@@ -36,7 +36,7 @@ const MapMain = () => {
 					<MeterMarker distance={markerData.distance} rows={markerData.rows} />
 				</Map>
 
-				
+				{popupInfo && <MeterTable />}
 			</Container>
 		</>
 	);
