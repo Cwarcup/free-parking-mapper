@@ -12,6 +12,7 @@ import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
 import RowsSlider from "./components/RowsSlider";
 import SingleCompWrapper from "./components/SingleCompWrapper";
+import MeterTable from "./components/MeterTable";
 
 function App() {
 	const [user, setUser] = useState(null);
@@ -53,6 +54,9 @@ function App() {
 												</SingleCompWrapper>
 												<SingleCompWrapper size={"w-fit"}>
 													<RowsSlider />
+												</SingleCompWrapper>
+												<SingleCompWrapper size={"w-fit"}>
+													{popupInfo && <MeterTable />}
 												</SingleCompWrapper>
 											</div>
 										</main>
