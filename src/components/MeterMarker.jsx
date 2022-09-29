@@ -20,6 +20,8 @@ const MeterMarker = ({ distance, rows, popupFunction }) => {
 	console.log("markerData", markerData);
 	console.log("distance", distance);
 	console.log("rows", rows);
+	console.log("res.data.records", marker);
+
 
 	useEffect(() => {
 		getParkingMeters(
