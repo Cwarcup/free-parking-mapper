@@ -8,7 +8,6 @@ import {
 	MarkerDataContext,
 } from "./helpers/context";
 import MapMain from "./components/MapMain";
-import SearchInput from "./components/SearchInput";
 import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
 import RowsSlider from "./components/RowsSlider";

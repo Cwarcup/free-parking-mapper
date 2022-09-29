@@ -21,3 +21,13 @@ main#dashboard-main::-webkit-scrollbar-track {
 	box-shadow: inset 0 0 5px rgb(156 163 175 / 0.75);
 	border-radius: 10px;
 }
+
+.mapboxgl-popup-content {
+	background: #384151 !important
+}
+
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+	border-top-color: #384151 !important;
+}
