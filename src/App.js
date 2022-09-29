@@ -10,6 +10,8 @@ import MapMain from "./components/MapMain";
 import SearchInput from "./components/SearchInput";
 import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
+import RowsSlider from "./components/RowsSlider";
+import SingleCompWrapper from "./components/SingleCompWrapper";
 
 function App() {
 	const [user, setUser] = useState(null);
@@ -45,7 +47,14 @@ function App() {
 											id="dashboard-main"
 											className="h-[calc(100vh-10rem)] overflow-auto px-4 py-10"
 										>
-											<MapMain />
+											<div className="flex flex-wrap gap-x-4 gap-y-8">
+												<SingleCompWrapper size={"w-full"}>
+													<MapMain />
+												</SingleCompWrapper>
+												<SingleCompWrapper size={"w-fit"}>
+													<RowsSlider />
+												</SingleCompWrapper>
+											</div>
 										</main>
 									</div>
 								</div>

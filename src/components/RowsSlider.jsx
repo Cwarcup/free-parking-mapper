@@ -24,12 +24,12 @@ const RowsSlider = () => {
 
 	return (
 		<>
-			<div className="flex flex-col items-center max-w-xl">
+			<div className="flex flex-col items-center max-w-xs">
 				<label
 					htmlFor="minmax-range"
 					className="block mb-2 text-sm font-medium text-gray-900 "
 				>
-					Rows
+					Number of Meters
 				</label>
 				<input
 					type="range"
@@ -37,20 +37,6 @@ const RowsSlider = () => {
 					max="100"
 					value={rows}
 					onChange={(e) => handleRowsChange(e)}
-					className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
-				/>
-				<label
-					htmlFor="minmax-range"
-					className="block mb-2 text-sm font-medium text-gray-900 "
-				>
-					parking Radius
-				</label>
-				<input
-					type="range"
-					min="500"
-					max="10000"
-					value={distance}
-					onChange={(e) => handleDistanceChange(e)}
 					className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
 				/>
 			</div>

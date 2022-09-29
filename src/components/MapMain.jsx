@@ -11,7 +11,7 @@ import SearchLayer from "./SearchLayer";
 import MeterMarker from "./MeterMarker";
 import { Container } from "@mui/material";
 import MeterTable from "./MeterTable";
-import RowsSlider from "./RowsSlider";
+
 
 const MapMain = () => {
 	const { viewState, setViewState } = useContext(ViewContext);
@@ -39,7 +39,7 @@ const MapMain = () => {
 
 				{popupInfo && <MeterTable />}
 			</Container>
-			<RowsSlider />
+
 		</>
 	);
 };

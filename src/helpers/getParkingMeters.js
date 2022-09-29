@@ -5,9 +5,6 @@ import { polygonCoordinates } from "polygon-coordinates";
 // rows is the number of parking meters to return
 
 const getParkingMeters = (lat, long, distance, rows) => {
-	console.log("getParkingMeters", lat, long, distance, rows);
-	// set the url for the api call
-
 	const square = polygonCoordinates(lat, long, 4, 1);
 
 	const squareObj = {
