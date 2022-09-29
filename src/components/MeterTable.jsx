@@ -34,7 +34,6 @@ const MeterTable = () => {
 		},
 	} = popupInfo;
 
-	console.log(creditcard, geo_local_area, pay_phone);
 
 	return (
 		<>

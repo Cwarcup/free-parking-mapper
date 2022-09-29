@@ -9,19 +9,11 @@ import getParkingMeters from "../helpers/getParkingMeters";
 import { useEffect, useState } from "react";
 
 const MeterMarker = ({ distance, rows, popupFunction }) => {
-	// data.fields.geom.coordinates[0] = longitude
-	// data.fields.geom.coordinates[1] = latitude
 
 	const { viewState } = useContext(ViewContext);
 	const [marker, setMarker] = useState([]);
 	const { setPopupInfo } = useContext(PopupInfoContext);
 	const { markerData } = useContext(MarkerDataContext);
-
-	console.log("markerData", markerData);
-	console.log("distance", distance);
-	console.log("rows", rows);
-	console.log("res.data.records", marker);
-
 
 	useEffect(() => {
 		getParkingMeters(

@@ -40,8 +40,6 @@ function App() {
 		rows: "50",
 	});
 
-	console.log(markerData);
-
 	return (
 		<>
 			<UserContext.Provider value={{ user, setUser }}>

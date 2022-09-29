@@ -5,21 +5,11 @@ const RowsSlider = () => {
 	const { markerData, setMarkerData } = useContext(MarkerDataContext);
 
 	const [rows, setRows] = useState(markerData.rows);
-	const [distance, setDistance] = useState(markerData.distance);
 
 	// function to update the rows state and set markerData rows
 	const handleRowsChange = (e) => {
-		console.log("row value", e.target.value);
-
 		setRows(e.target.value);
 		setMarkerData({ ...markerData, rows: e.target.value });
-	};
-
-	// function to update the distance radius state and set markerData distance
-	const handleDistanceChange = (e) => {
-		console.log("distance value", e.target.value);
-		setDistance(e.target.value);
-		setMarkerData({ ...markerData, distance: e.target.value });
 	};
 
 	return (
