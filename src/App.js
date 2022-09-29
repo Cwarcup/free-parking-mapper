@@ -46,7 +46,7 @@ function App() {
 									<div className="h-full overflow-hidden pl-10">
 										<main
 											id="dashboard-main"
-											className="h-[calc(100vh-10rem)] overflow-auto px-4 py-10"
+											className="h-100vh overflow-auto px-4 py-10"
 										>
 											<div className="flex flex-wrap gap-x-4 gap-y-8">
 												<SingleCompWrapper size={"w-full"}>
