@@ -1,3 +1,4 @@
+/* eslint-disable import/no-webpack-loader-syntax */
 import { useState } from "react";
 import {
 	UserContext,
@@ -14,6 +15,13 @@ import RowsSlider from "./components/RowsSlider";
 import SingleCompWrapper from "./components/SingleCompWrapper";
 import MeterTable from "./components/MeterTable";
 import MeterNotSelected from "./components/MeterNotSelected";
+import "mapbox-gl/dist/mapbox-gl.css";
+import mapboxgl from "mapbox-gl";
+
+// @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass =
+	require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 function App() {
 	const [user, setUser] = useState(null);
