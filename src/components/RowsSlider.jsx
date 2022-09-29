@@ -27,7 +27,7 @@ const RowsSlider = () => {
 			<div className="flex flex-col items-center max-w-xs">
 				<label
 					htmlFor="minmax-range"
-					className="block mb-2 text-sm font-medium text-gray-900 "
+					className="block mb-4 text-sm font-medium text-slate-800 "
 				>
 					Number of Meters
 				</label>
@@ -35,9 +35,10 @@ const RowsSlider = () => {
 					type="range"
 					min="0"
 					max="100"
+					step="10"
 					value={rows}
 					onChange={(e) => handleRowsChange(e)}
-					className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+					className="w-full h-2 rounded-lg appearance-none cursor-pointer dark:bg-slate-800"
 				/>
 			</div>
 		</>

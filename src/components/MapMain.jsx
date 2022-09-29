@@ -12,7 +12,6 @@ import MeterMarker from "./MeterMarker";
 import { Container } from "@mui/material";
 import MeterTable from "./MeterTable";
 
-
 const MapMain = () => {
 	const { viewState, setViewState } = useContext(ViewContext);
 	const { searchResults } = useContext(SearchContext);
@@ -26,7 +25,7 @@ const MapMain = () => {
 					mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
 					{...viewState}
 					onMove={(evt) => setViewState(evt.viewState)}
-					style={{ width: "500px", height: "500px" }}
+					style={{ width: "fit", height: "500px" }}
 					mapStyle="mapbox://styles/mapbox/streets-v11"
 				>
 					<UserLayer />
@@ -39,7 +38,6 @@ const MapMain = () => {
 
 				{popupInfo && <MeterTable />}
 			</Container>
-
 		</>
 	);
 };
