@@ -23,7 +23,10 @@ function App() {
 
 	const [popupInfo, setPopupInfo] = useState(null);
 
-	const [markerData, setMarkerData] = useState({ distance: 500, rows: 50 });
+	const [markerData, setMarkerData] = useState({
+		distance: "1000",
+		rows: "50",
+	});
 
 	console.log(markerData);
 

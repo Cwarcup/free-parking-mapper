@@ -1,6 +1,10 @@
 import { Marker } from "react-map-gl";
 import { useContext } from "react";
-import { ViewContext, PopupInfoContext } from "../helpers/context";
+import {
+	ViewContext,
+	PopupInfoContext,
+	MarkerDataContext,
+} from "../helpers/context";
 import getParkingMeters from "../helpers/getParkingMeters";
 import { useEffect, useState } from "react";
 
@@ -11,6 +15,11 @@ const MeterMarker = ({ distance, rows, popupFunction }) => {
 	const { viewState } = useContext(ViewContext);
 	const [marker, setMarker] = useState([]);
 	const { setPopupInfo } = useContext(PopupInfoContext);
+	const { markerData } = useContext(MarkerDataContext);
+
+	console.log("markerData", markerData);
+	console.log("distance", distance);
+	console.log("rows", rows);
 
 	useEffect(() => {
 		getParkingMeters(
@@ -38,7 +47,7 @@ const MeterMarker = ({ distance, rows, popupFunction }) => {
 			);
 		});
 		// updates when viewState changes
-	}, [viewState]);
+	}, [viewState, markerData]);
 
 	return <>{marker}</>;
 };
