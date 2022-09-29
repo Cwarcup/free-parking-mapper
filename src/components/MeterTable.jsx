@@ -42,10 +42,18 @@ const MeterTable = () => {
 				<table className="w-full text-sm text-center text-gray-500">
 					<caption className="p-5 text-lg font-semibold text-left text-gray-900 bg-gray-50 ">
 						Meter Details
-						<p className="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
-							Depending on the time of day, the meter price and permitted
-							parking duration may change. Please refer to the table below for
-							more information about the meter you selected.
+						<p className="mt-1 text-sm font-normal text-gray-500">
+							Parking meters are in effect from{" "}
+							<u>9am to 10pm, 7 days a week</u>, including holidays.
+							<a
+								href="https://vancouver.ca/streets-transportation/parking.aspx"
+								target="_blank"
+								rel="noreferrer"
+								className="text-blue-500 hover:text-blue-600"
+							>
+								{" "}
+								More info
+							</a>
 						</p>
 					</caption>
 					<thead className="text-xs text-gray-700 uppercase bg-gray-100">
@@ -126,18 +134,6 @@ const MeterTable = () => {
 							<td className="py-4 px-6">{r_sa_6p_10}</td>
 							<td className="py-4 px-6">{r_su_6p_10}</td>
 							<td className="py-4 px-6">{t_mf_6p_10}</td>
-						</tr>
-						<tr className="bg-white border-b d">
-							<th
-								scope="row"
-								className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap"
-							>
-								10:00 PM - 6:00 AM
-							</th>
-							<th className="py-4 px-6">{r_mf_6p_10}</th>
-							<td className="py-4 px-6">{r_sa_6p_10}</td>
-							<td className="py-4 px-6">{r_su_6p_10}</td>
-							<td className="py-4 px-6">{t_su_6p_10}</td>
 						</tr>
 					</tbody>
 				</table>

@@ -34,8 +34,8 @@ const RowsSlider = () => {
 				<input
 					type="range"
 					min="0"
-					max="500"
-					step="10"
+					max="1000"
+					step="100"
 					value={rows}
 					onChange={(e) => handleRowsChange(e)}
 					className="w-full h-2 rounded-lg appearance-none cursor-pointer dark:bg-slate-800"

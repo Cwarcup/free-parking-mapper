@@ -13,6 +13,7 @@ import SideBar from "./components/SideBar";
 import RowsSlider from "./components/RowsSlider";
 import SingleCompWrapper from "./components/SingleCompWrapper";
 import MeterTable from "./components/MeterTable";
+import MeterNotSelected from "./components/MeterNotSelected";
 
 function App() {
 	const [user, setUser] = useState(null);
@@ -52,11 +53,11 @@ function App() {
 												<SingleCompWrapper size={"w-full"}>
 													<MapMain />
 												</SingleCompWrapper>
-												<SingleCompWrapper size={"w-fit"}>
+												<SingleCompWrapper size={"w-fit h-fit"}>
 													<RowsSlider />
 												</SingleCompWrapper>
-												<SingleCompWrapper size={"w-fit"}>
-													{popupInfo && <MeterTable />}
+												<SingleCompWrapper size={"w-fit h-fit"}>
+													{popupInfo ? <MeterTable /> : <MeterNotSelected />}
 												</SingleCompWrapper>
 											</div>
 										</main>
