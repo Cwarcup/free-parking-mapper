@@ -15,6 +15,7 @@ import {
 import SearchLayer from "./SearchLayer";
 import MeterMarker from "./MeterMarker";
 import price from "../helpers/price";
+import SearchMarker from "./SearchMarker";
 
 const MapMain = () => {
 	const { viewState, setViewState } = useContext(ViewContext);
@@ -37,7 +38,9 @@ const MapMain = () => {
 				<ScaleControl />
 
 				{searchResults && searchResults.features.length > 0 && (
-					<SearchLayer data={searchResults} />
+					<>
+						<SearchMarker data={searchResults} />
+					</>
 				)}
 				<MeterMarker distance={markerData.distance} rows={markerData.rows} />
 				{popupInfo && (

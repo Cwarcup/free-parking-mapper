@@ -22,6 +22,8 @@ const SearchInput = () => {
 			headers: {},
 		};
 
+		console.log(request);
+
 		axios(request)
 			.then(function (response) {
 				setSearchResults(response.data);
