@@ -4,6 +4,7 @@ import {
 	ViewContext,
 	PopupInfoContext,
 	MarkerDataContext,
+	FilterContext,
 } from "../helpers/context";
 import getParkingMeters from "../helpers/getParkingMeters";
 import { useEffect, useState } from "react";
@@ -14,10 +15,7 @@ const MeterMarker = ({ distance, rows, popupFunction }) => {
 	const [marker, setMarker] = useState([]);
 	const { setPopupInfo } = useContext(PopupInfoContext);
 	const { markerData } = useContext(MarkerDataContext);
-
-	const [filter, setFilter] = useState({
-		maxPrice: "$$$$$$",
-	});
+	const { filter } = useContext(FilterContext);
 
 	useEffect(() => {
 		getParkingMeters(
@@ -48,7 +46,7 @@ const MeterMarker = ({ distance, rows, popupFunction }) => {
 			);
 		});
 		// updates when viewState changes
-	}, [viewState, markerData]);
+	}, [viewState, markerData, filter]);
 
 	return <>{marker}</>;
 };

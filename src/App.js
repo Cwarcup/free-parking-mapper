@@ -6,6 +6,7 @@ import {
 	SearchContext,
 	PopupInfoContext,
 	MarkerDataContext,
+	FilterContext,
 } from "./helpers/context";
 import MapMain from "./components/MapMain";
 import Navbar from "./components/Navbar";
@@ -16,6 +17,7 @@ import MeterTable from "./components/MeterTable";
 import MeterNotSelected from "./components/MeterNotSelected";
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
+import FilterMetersByPrice from "./components/FilterMetersByPrice";
 
 // @ts-ignore
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -39,6 +41,10 @@ function App() {
 		rows: "50",
 	});
 
+	const [filter, setFilter] = useState({
+		maxPrice: "$$$$$$",
+	});
+
 	return (
 		<>
 			<UserContext.Provider value={{ user, setUser }}>
@@ -46,28 +52,33 @@ function App() {
 					<SearchContext.Provider value={{ searchResults, setSearchResults }}>
 						<PopupInfoContext.Provider value={{ popupInfo, setPopupInfo }}>
 							<MarkerDataContext.Provider value={{ markerData, setMarkerData }}>
-								<SideBar />
-								<div className="flex h-full w-full flex-col">
-									<Navbar />
-									<div className="h-full overflow-hidden pl-10">
-										<main
-											id="dashboard-main"
-											className="h-100vh overflow-auto px-4 py-10"
-										>
-											<div className="flex flex-wrap gap-x-4 gap-y-8">
-												<SingleCompWrapper size={"w-full"}>
-													<MapMain />
-												</SingleCompWrapper>
-												<SingleCompWrapper size={"w-fit h-fit"}>
-													<RowsSlider />
-												</SingleCompWrapper>
-												<SingleCompWrapper size={"w-fit h-fit"}>
-													{popupInfo ? <MeterTable /> : <MeterNotSelected />}
-												</SingleCompWrapper>
-											</div>
-										</main>
+								<FilterContext.Provider value={{ filter, setFilter }}>
+									<SideBar />
+									<div className="flex h-full w-full flex-col">
+										<Navbar />
+										<div className="h-full overflow-hidden pl-10">
+											<main
+												id="dashboard-main"
+												className="h-100vh overflow-auto px-4 py-10"
+											>
+												<div className="flex flex-wrap gap-x-4 gap-y-8">
+													<SingleCompWrapper size={"w-full"}>
+														<MapMain />
+													</SingleCompWrapper>
+													<SingleCompWrapper size={"w-fit h-fit"}>
+														<RowsSlider />
+													</SingleCompWrapper>
+													<SingleCompWrapper size={"w-fit h-fit"}>
+														{popupInfo ? <MeterTable /> : <MeterNotSelected />}
+													</SingleCompWrapper>
+													<SingleCompWrapper size={"w-fit h-fit"}>
+														<FilterMetersByPrice />
+													</SingleCompWrapper>
+												</div>
+											</main>
+										</div>
 									</div>
-								</div>
+								</FilterContext.Provider>
 							</MarkerDataContext.Provider>
 						</PopupInfoContext.Provider>
 					</SearchContext.Provider>
