@@ -59,7 +59,7 @@ function App() {
 										<div className="h-full overflow-auto pl-0 md:pl-10">
 											<main
 												id="dashboard-main"
-												className="h-100vh overflow-auto px-4 py-4 md:py-10"
+												className="h-100vh overflow-auto px-4 pt-4 md:pt-10 pb-[100px]"
 											>
 												<div className="flex flex-col items-center gap-x-4 gap-y-2">
 													<SingleCompWrapper size={"w-full"}>
@@ -70,7 +70,7 @@ function App() {
 															<RowsSlider />
 														</SingleCompWrapper>
 														<SingleCompWrapper
-															size={"w-fit h-[-webkit-fill-available]"}
+															size={"w-fit h-[117px] sm:h-[181px] z-50"}
 														>
 															<FilterMetersByPrice />
 														</SingleCompWrapper>
