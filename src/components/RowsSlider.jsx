@@ -42,9 +42,9 @@ const RowsSlider = () => {
 				</label>
 				<input
 					type="range"
-					min="0"
-					max="500"
-					step="100"
+					min="1"
+					max="100"
+					step="10"
 					value={rows}
 					onChange={(e) => handleRowsChange(e)}
 					disabled={disabled}

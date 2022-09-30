@@ -13,6 +13,7 @@ const MeterMarker = ({ distance, rows, popupFunction }) => {
 	const [marker, setMarker] = useState([]);
 	const { setPopupInfo } = useContext(PopupInfoContext);
 	const { markerData } = useContext(MarkerDataContext);
+	console.log("marker", marker);
 
 	useEffect(() => {
 		getParkingMeters(
