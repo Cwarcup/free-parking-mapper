@@ -56,24 +56,36 @@ function App() {
 									<SideBar />
 									<div className="flex h-full w-full flex-col">
 										<Navbar />
-										<div className="h-full overflow-hidden pl-10">
+										<div className="h-full overflow-auto pl-0 md:pl-10">
 											<main
 												id="dashboard-main"
-												className="h-100vh overflow-auto px-4 py-10"
+												className="h-100vh overflow-auto px-4 py-4 md:py-10"
 											>
-												<div className="flex flex-wrap gap-x-4 gap-y-8">
+												<div className="flex flex-col items-center gap-x-4 gap-y-2">
 													<SingleCompWrapper size={"w-full"}>
 														<MapMain />
 													</SingleCompWrapper>
-													<SingleCompWrapper size={"w-fit h-fit"}>
-														<RowsSlider />
-													</SingleCompWrapper>
-													<SingleCompWrapper size={"w-fit h-fit"}>
-														<FilterMetersByPrice />
-													</SingleCompWrapper>
-													<SingleCompWrapper size={"w-fit h-fit"}>
-														{popupInfo ? <MeterTable /> : <MeterNotSelected />}
-													</SingleCompWrapper>
+													<div className="grid grid-cols-1 sm:grid-cols-2 gap-2 justify-items-center">
+														<SingleCompWrapper size={"w-fit h-fit"}>
+															<RowsSlider />
+														</SingleCompWrapper>
+														<SingleCompWrapper size={"w-fit h-fit"}>
+															<FilterMetersByPrice />
+														</SingleCompWrapper>
+														<div className="col-span-2">
+															<SingleCompWrapper
+																size={
+																	"h-fit w-96 lg:w-fit sm:w-[450px] md:w-[550px]"
+																}
+															>
+																{popupInfo ? (
+																	<MeterTable />
+																) : (
+																	<MeterNotSelected />
+																)}
+															</SingleCompWrapper>
+														</div>
+													</div>
 												</div>
 											</main>
 										</div>

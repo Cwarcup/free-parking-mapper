@@ -14,7 +14,6 @@ import {
 } from "../helpers/context";
 import SearchLayer from "./SearchLayer";
 import MeterMarker from "./MeterMarker";
-import { Container } from "@mui/material";
 import price from "../helpers/price";
 
 const MapMain = () => {
@@ -25,44 +24,42 @@ const MapMain = () => {
 
 	return (
 		<>
-			<Container maxWidth="xl">
-				<Map
-					mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-					{...viewState}
-					onMove={(evt) => setViewState(evt.viewState)}
-					style={{ width: "fit", height: "500px" }}
-					mapStyle="mapbox://styles/mapbox/streets-v11"
-				>
-					<GeolocateControl position="top-left" />
-					<FullscreenControl position="top-left" />
-					<NavigationControl position="top-left" />
-					<ScaleControl />
+			<Map
+				mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+				{...viewState}
+				onMove={(evt) => setViewState(evt.viewState)}
+				style={{ width: "fit", height: "500px" }}
+				mapStyle="mapbox://styles/mapbox/streets-v11"
+			>
+				<GeolocateControl position="top-left" />
+				<FullscreenControl position="top-left" />
+				<NavigationControl position="top-left" />
+				<ScaleControl />
 
-					{searchResults && searchResults.features.length > 0 && (
-						<SearchLayer data={searchResults} />
-					)}
-					<MeterMarker distance={markerData.distance} rows={markerData.rows} />
-					{popupInfo && (
-						<Popup
-							latitude={popupInfo.fields.geom.coordinates[1]}
-							longitude={popupInfo.fields.geom.coordinates[0]}
-							onClose={() => setPopupInfo(false)}
-							anchor="bottom"
-							className="flex flex-col items-center rounded-3xl text-center p-3"
-						>
-							<div className="m-2">
-								<p className="mb-2 text-xl font-medium text-gray-100">
-									{popupInfo.fields.geo_local_area}
-								</p>
-								<p className="text-gray-100">
-									PayByPhone: {popupInfo.fields.pay_phone}
-								</p>
-								<p className="text-gray-100">{price(popupInfo.fields)}</p>
-							</div>
-						</Popup>
-					)}
-				</Map>
-			</Container>
+				{searchResults && searchResults.features.length > 0 && (
+					<SearchLayer data={searchResults} />
+				)}
+				<MeterMarker distance={markerData.distance} rows={markerData.rows} />
+				{popupInfo && (
+					<Popup
+						latitude={popupInfo.fields.geom.coordinates[1]}
+						longitude={popupInfo.fields.geom.coordinates[0]}
+						onClose={() => setPopupInfo(false)}
+						anchor="bottom"
+						className="flex flex-col items-center rounded-3xl text-center p-3"
+					>
+						<div className="m-2">
+							<p className="mb-2 text-xl font-medium text-gray-100">
+								{popupInfo.fields.geo_local_area}
+							</p>
+							<p className="text-gray-100">
+								PayByPhone: {popupInfo.fields.pay_phone}
+							</p>
+							<p className="text-gray-100">{price(popupInfo.fields)}</p>
+						</div>
+					</Popup>
+				)}
+			</Map>
 		</>
 	);
 };

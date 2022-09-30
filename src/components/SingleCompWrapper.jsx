@@ -2,7 +2,7 @@ import React from "react";
 
 const SingleCompWrapper = (props) => {
 	return (
-		<div className={`rounded-xl bg-white p-10 shadow-md ${props.size}`}>
+		<div className={`rounded-xl bg-white sm:p-10 p-2 shadow-md ${props.size}`}>
 			{props.children}
 		</div>
 	);
