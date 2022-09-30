@@ -12,7 +12,6 @@ import {
 	PopupInfoContext,
 	MarkerDataContext,
 } from "../helpers/context";
-import UserLayer from "./UserLayer";
 import SearchLayer from "./SearchLayer";
 import MeterMarker from "./MeterMarker";
 import { Container } from "@mui/material";
@@ -23,7 +22,6 @@ const MapMain = () => {
 	const { searchResults } = useContext(SearchContext);
 	const { popupInfo, setPopupInfo } = useContext(PopupInfoContext);
 	const { markerData } = useContext(MarkerDataContext);
-
 
 	return (
 		<>
@@ -39,8 +37,6 @@ const MapMain = () => {
 					<FullscreenControl position="top-left" />
 					<NavigationControl position="top-left" />
 					<ScaleControl />
-
-					<UserLayer />
 
 					{searchResults && searchResults.features.length > 0 && (
 						<SearchLayer data={searchResults} />

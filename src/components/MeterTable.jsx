@@ -1,13 +1,4 @@
 import { useContext } from "react";
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableHead,
-	TableRow,
-	Paper,
-} from "@mui/material";
 import { PopupInfoContext } from "../helpers/context";
 
 const MeterTable = () => {
@@ -26,14 +17,8 @@ const MeterTable = () => {
 			r_su_9a_6p,
 			t_mf_6p_10,
 			t_mf_9a_6p,
-			t_sa_6p_10,
-			t_sa_9a_6p,
-			t_su_6p_10,
-			t_su_9a_6p,
-			timeineffe,
 		},
 	} = popupInfo;
-
 
 	return (
 		<>
