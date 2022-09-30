@@ -65,7 +65,7 @@ function App() {
 													<SingleCompWrapper size={"w-full"}>
 														<MapMain />
 													</SingleCompWrapper>
-													<div className="grid grid-cols-1 sm:grid-cols-2 gap-2 justify-items-center">
+													<div className="flex flex-row flex-wrap gap-3 justify-center md:justify-start">
 														<SingleCompWrapper size={"w-fit h-fit"}>
 															<RowsSlider />
 														</SingleCompWrapper>
