@@ -69,7 +69,9 @@ function App() {
 														<SingleCompWrapper size={"w-fit h-fit"}>
 															<RowsSlider />
 														</SingleCompWrapper>
-														<SingleCompWrapper size={"w-fit h-fit"}>
+														<SingleCompWrapper
+															size={"w-fit h-[-webkit-fill-available]"}
+														>
 															<FilterMetersByPrice />
 														</SingleCompWrapper>
 														<div className="col-span-2">
