@@ -20,8 +20,6 @@ const FilterMetersByPrice = () => {
 		setDropdownOpen(false);
 	};
 
-	// when user clicks a list item, set the max price to the value of the list item
-
 	return (
 		<>
 			<div className="p-2">
@@ -38,10 +36,10 @@ const FilterMetersByPrice = () => {
 						htmlFor="select-1"
 						className="flex w-full cursor-pointer select-none rounded-lg border p-2 px-3 text-sm text-gray-700 ring-blue-400 peer-checked:ring"
 					>
-						{filter.maxPrice.length > 0 ? (
-							<span className="flex-1">{filter.maxPrice}</span>
-						) : (
+						{filter.maxPrice === "$$$$$$$" ? (
 							<span className="flex-1 text-gray-400">Max Price</span>
+						) : (
+							<span className="flex-1">{filter.maxPrice}</span>
 						)}
 					</label>
 					<img

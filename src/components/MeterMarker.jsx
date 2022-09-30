@@ -17,6 +17,8 @@ const MeterMarker = ({ distance, rows, popupFunction }) => {
 	const { markerData } = useContext(MarkerDataContext);
 	const { filter } = useContext(FilterContext);
 
+	console.log("filter", filter);
+
 	useEffect(() => {
 		getParkingMeters(
 			viewState.latitude,

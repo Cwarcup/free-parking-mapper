@@ -42,7 +42,7 @@ function App() {
 	});
 
 	const [filter, setFilter] = useState({
-		maxPrice: 5,
+		maxPrice: "$$$$$$$",
 	});
 
 	return (
@@ -69,10 +69,10 @@ function App() {
 														<RowsSlider />
 													</SingleCompWrapper>
 													<SingleCompWrapper size={"w-fit h-fit"}>
-														{popupInfo ? <MeterTable /> : <MeterNotSelected />}
+														<FilterMetersByPrice />
 													</SingleCompWrapper>
 													<SingleCompWrapper size={"w-fit h-fit"}>
-														<FilterMetersByPrice />
+														{popupInfo ? <MeterTable /> : <MeterNotSelected />}
 													</SingleCompWrapper>
 												</div>
 											</main>
