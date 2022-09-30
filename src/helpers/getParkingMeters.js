@@ -5,7 +5,7 @@ import { polygonCoordinates } from "polygon-coordinates";
 // rows is the number of parking meters to return
 
 const getParkingMeters = (lat, long, distance, rows) => {
-	const square = polygonCoordinates(lat, long, 4, 1);
+	const square = polygonCoordinates(lat, long, 4, 0.25);
 
 	const squareObj = {
 		point1: { lat: square[0][0].toString(), lng: square[0][1].toString() },
@@ -15,6 +15,8 @@ const getParkingMeters = (lat, long, distance, rows) => {
 	};
 
 	const url = `https://opendata.vancouver.ca/api/records/1.0/search/?dataset=parking-meters&q=&rows=${rows}&facet=r_mf_9a_6p&facet=r_mf_6p_10&facet=r_sa_9a_6p&facet=r_sa_6p_10&facet=r_su_9a_6p&facet=r_su_6p_10&facet=timeineffe&facet=t_mf_9a_6p&facet=t_mf_6p_10&facet=t_sa_9a_6p&facet=t_sa_6p_10&facet=t_su_9a_6p&facet=t_su_6p_10&facet=creditcard&facet=geo_local_area&geofilter.polygon=(${squareObj.point1.lat}%2C+${squareObj.point1.lng})%2C+(${squareObj.point2.lat}%2C+${squareObj.point2.lng})%2C+(${squareObj.point3.lat}%2C+${squareObj.point3.lng})%2C+(${squareObj.point4.lat}%2C+${squareObj.point4.lng})`;
+
+	console.log("URl", url);
 
 	// set the config for the api call
 	const config = {
