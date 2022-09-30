@@ -70,7 +70,7 @@ function App() {
 															<RowsSlider />
 														</SingleCompWrapper>
 														<SingleCompWrapper
-															size={"w-fit h-[117px] sm:h-[181px] z-50"}
+															size={"w-fit h-[117px] sm:h-[181px] z-30"}
 														>
 															<FilterMetersByPrice />
 														</SingleCompWrapper>
