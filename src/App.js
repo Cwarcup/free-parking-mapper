@@ -42,7 +42,7 @@ function App() {
 	});
 
 	const [filter, setFilter] = useState({
-		maxPrice: "$$$$$$",
+		maxPrice: 5,
 	});
 
 	return (
