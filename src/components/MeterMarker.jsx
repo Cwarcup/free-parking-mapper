@@ -18,33 +18,37 @@ const MeterMarker = ({ distance, rows, popupFunction }) => {
 	const { filter } = useContext(FilterContext);
 
 	useEffect(() => {
-		getParkingMeters(
-			viewState.latitude,
-			viewState.longitude,
-			distance,
-			rows
-		).then((res) => {
-			setMarker(
-				res.data.records.map((meter, index) => {
-					// check the filter object to see if the price is below the max price
-					if (price(meter.fields) <= filter.maxPrice) {
-						return (
-							<Marker
-								key={`marker-${index}`}
-								latitude={meter.fields.geom.coordinates[1]}
-								longitude={meter.fields.geom.coordinates[0]}
-								onClick={(e) => {
-									// If we let the click event propagates to the map, it will immediately close the popup
-									// with `closeOnClick: true`
-									e.originalEvent.stopPropagation();
-									setPopupInfo(meter);
-								}}
-							/>
-						);
-					}
-				})
-			);
-		});
+		const getData = setTimeout(() => {
+			getParkingMeters(
+				viewState.latitude,
+				viewState.longitude,
+				distance,
+				rows
+			).then((res) => {
+				setMarker(
+					res.data.records.map((meter, index) => {
+						// check the filter object to see if the price is below the max price
+						if (price(meter.fields) <= filter.maxPrice) {
+							return (
+								<Marker
+									key={`marker-${index}`}
+									latitude={meter.fields.geom.coordinates[1]}
+									longitude={meter.fields.geom.coordinates[0]}
+									onClick={(e) => {
+										// If we let the click event propagates to the map, it will immediately close the popup
+										// with `closeOnClick: true`
+										e.originalEvent.stopPropagation();
+										setPopupInfo(meter);
+									}}
+								/>
+							);
+						}
+					})
+				);
+			});
+		}, 300);
+
+		return () => clearTimeout(getData);
 		// updates when viewState changes
 	}, [viewState, markerData, filter]);
 

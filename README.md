@@ -14,3 +14,4 @@ Check out the app here: https://van-meter-parking.vercel.app/
 
 ![Parking Buddy](public/images/app-design.png)
 
+(49.2912052,-123.1233245),(49.2874264,-123.1295472),(49.2837593,-123.1240111),(49.2879582,-123.1162864)
