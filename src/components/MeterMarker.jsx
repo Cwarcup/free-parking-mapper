@@ -13,9 +13,11 @@ import price from "../helpers/price";
 const MeterMarker = ({ distance, rows, popupFunction }) => {
 	const { viewState } = useContext(ViewContext);
 	const [marker, setMarker] = useState([]);
-	const { setPopupInfo } = useContext(PopupInfoContext);
+	const { popupInfo, setPopupInfo } = useContext(PopupInfoContext);
 	const { markerData } = useContext(MarkerDataContext);
 	const { filter } = useContext(FilterContext);
+
+	console.log("popupInfo", popupInfo);
 
 	useEffect(() => {
 		getParkingMeters(
@@ -38,6 +40,7 @@ const MeterMarker = ({ distance, rows, popupFunction }) => {
 									// with `closeOnClick: true`
 									e.originalEvent.stopPropagation();
 									setPopupInfo(meter);
+
 								}}
 							/>
 						);

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import Map, {
 	Popup,
 	GeolocateControl,
@@ -16,6 +16,7 @@ import SearchLayer from "./SearchLayer";
 import MeterMarker from "./MeterMarker";
 import price from "../helpers/price";
 import SearchMarker from "./SearchMarker";
+import bbox from "@turf/bbox";
 
 const MapMain = () => {
 	const { viewState, setViewState } = useContext(ViewContext);
@@ -23,9 +24,53 @@ const MapMain = () => {
 	const { popupInfo, setPopupInfo } = useContext(PopupInfoContext);
 	const { markerData } = useContext(MarkerDataContext);
 
+	const mapRef = useRef();
+
+	if (popupInfo) {
+		const lat = popupInfo.fields.geom.coordinates[0];
+		const lng = popupInfo.fields.geom.coordinates[1];
+
+		const bbox = [
+			[lat - 0.0002, lng - 0.0002],
+			[lat + 0.0002, lng + 0.0002],
+		];
+
+		console.log("bbox", bbox);
+
+		// 	// fit the map to the bounding box
+
+		mapRef.current.fitBounds(bbox, { padding: 40, duration: 100 });
+	}
+
+	console.log("mapRef", mapRef);
+
+	console.log();
+
+	// const onClick = (event) => {
+	// 	console.log("click event!!");
+	// 	// const feature = event.features[0];
+	// 	if (popupInfo) {
+	// 		// calculate the bounding box of the feature
+	// 		const lat = popupInfo.fields.geom.coordinates[0];
+	// 		const lng = popupInfo.fields.geom.coordinates[1];
+
+	// 		const bbox = [
+	// 			[lat - 0.0001, lng - 0.0001],
+	// 			[lat + 0.0001, lng + 0.0001],
+	// 		];
+
+	// 		// fit the map to the bounding box
+
+	// 		mapRef.current.fitBounds(bbox, { padding: 40, duration: 1000 });
+	// 	}
+
+	// 	console.log("event", bbox);
+	// };
+
 	return (
 		<>
 			<Map
+				ref={mapRef}
 				mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
 				{...viewState}
 				onMove={(evt) => setViewState(evt.viewState)}
