@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import Map, {
 	Popup,
 	GeolocateControl,
@@ -26,46 +26,21 @@ const MapMain = () => {
 
 	const mapRef = useRef();
 
-	if (popupInfo) {
-		const lat = popupInfo.fields.geom.coordinates[0];
-		const lng = popupInfo.fields.geom.coordinates[1];
+	useEffect(() => {
+		if (popupInfo) {
+			const lat = popupInfo.fields.geom.coordinates[0];
+			const lng = popupInfo.fields.geom.coordinates[1];
 
-		const bbox = [
-			[lat - 0.0002, lng - 0.0002],
-			[lat + 0.0002, lng + 0.0002],
-		];
+			const bbox = [
+				[lat - 0.0002, lng - 0.0002],
+				[lat + 0.0002, lng + 0.0002],
+			];
 
-		console.log("bbox", bbox);
+			// 	// fit the map to the bounding box
 
-		// 	// fit the map to the bounding box
-
-		mapRef.current.fitBounds(bbox, { padding: 40, duration: 100 });
-	}
-
-	console.log("mapRef", mapRef);
-
-	console.log();
-
-	// const onClick = (event) => {
-	// 	console.log("click event!!");
-	// 	// const feature = event.features[0];
-	// 	if (popupInfo) {
-	// 		// calculate the bounding box of the feature
-	// 		const lat = popupInfo.fields.geom.coordinates[0];
-	// 		const lng = popupInfo.fields.geom.coordinates[1];
-
-	// 		const bbox = [
-	// 			[lat - 0.0001, lng - 0.0001],
-	// 			[lat + 0.0001, lng + 0.0001],
-	// 		];
-
-	// 		// fit the map to the bounding box
-
-	// 		mapRef.current.fitBounds(bbox, { padding: 40, duration: 1000 });
-	// 	}
-
-	// 	console.log("event", bbox);
-	// };
+			mapRef.current.fitBounds(bbox, { padding: 40, duration: 1000 });
+		}
+	}, [popupInfo]);
 
 	return (
 		<>

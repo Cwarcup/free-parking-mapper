@@ -48,7 +48,7 @@ const MeterMarker = ({ distance, rows, popupFunction }) => {
 					})
 				);
 			});
-		}, 300);
+		}, 500);
 
 		return () => clearTimeout(getData);
 		// updates when viewState changes
