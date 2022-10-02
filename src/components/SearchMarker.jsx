@@ -12,9 +12,9 @@ const SearchMarker = ({ data }) => {
 	// create array of markers for each feature in data
 	const markers = data.features.map((feature, index) => {
 		return (
-			<>
+			<div key={`marker-${index}`}>
 				<Marker
-					key={index}
+					key={`search-marker-${index}`}
 					latitude={feature.center[1]}
 					longitude={feature.center[0]}
 					onClick={(e) => {
@@ -26,6 +26,7 @@ const SearchMarker = ({ data }) => {
 				</Marker>
 				{marker && (
 					<Popup
+						key={`search-popup-marker-${index}`}
 						latitude={marker.center[1]}
 						longitude={marker.center[0]}
 						onClose={() => setMarker(false)}
@@ -41,7 +42,7 @@ const SearchMarker = ({ data }) => {
 						</div>
 					</Popup>
 				)}
-			</>
+			</div>
 		);
 	});
 
