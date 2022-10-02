@@ -9,8 +9,6 @@ const SearchMarker = ({ data }) => {
 		setMarker(e);
 	};
 
-	console.log("data", data);
-
 	// create array of markers for each feature in data
 	const markers = data.features.map((feature, index) => {
 		return (
