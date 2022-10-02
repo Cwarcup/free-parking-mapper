@@ -32,8 +32,8 @@ const MapMain = () => {
 			const lng = popupInfo.fields.geom.coordinates[1];
 
 			const bbox = [
-				[lat - 0.0002, lng - 0.0002],
-				[lat + 0.0002, lng + 0.0002],
+				[lat - 0.0004, lng - 0.0004],
+				[lat + 0.0004, lng + 0.0004],
 			];
 
 			// 	// fit the map to the bounding box

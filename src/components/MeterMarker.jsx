@@ -13,11 +13,9 @@ import price from "../helpers/price";
 const MeterMarker = ({ distance, rows, popupFunction }) => {
 	const { viewState } = useContext(ViewContext);
 	const [marker, setMarker] = useState([]);
-	const { popupInfo, setPopupInfo } = useContext(PopupInfoContext);
+	const { setPopupInfo } = useContext(PopupInfoContext);
 	const { markerData } = useContext(MarkerDataContext);
 	const { filter } = useContext(FilterContext);
-
-	console.log("popupInfo", popupInfo);
 
 	useEffect(() => {
 		const getData = setTimeout(() => {

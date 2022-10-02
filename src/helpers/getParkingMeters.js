@@ -24,7 +24,7 @@ const getParkingMeters = (lat, long, distance, rows) => {
 			Authorization: `Apikey ${process.env.REACT_APP_VANCITY_API_KEY}`,
 		},
 	};
-	console.log("requesting data");
+
 	return axios(config);
 };
 
