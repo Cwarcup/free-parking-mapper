@@ -21,12 +21,13 @@ const MapMain = () => {
 	const { searchResults } = useContext(SearchContext);
 	const { popupInfo, setPopupInfo } = useContext(PopupInfoContext);
 	const { markerData } = useContext(MarkerDataContext);
-	const { searchInfo } = useContext(SearchInfoContext);
+	const { searchInfo, setSearchInfo } = useContext(SearchInfoContext);
 
 	const mapRef = useRef();
 
 	useEffect(() => {
 		if (popupInfo) {
+			setSearchInfo(null);
 			const lat = popupInfo.fields.geom.coordinates[0];
 			const lng = popupInfo.fields.geom.coordinates[1];
 
@@ -39,6 +40,7 @@ const MapMain = () => {
 		}
 
 		if (searchInfo) {
+			setPopupInfo(null);
 			const lat = searchInfo.latitude;
 			const lng = searchInfo.longitude;
 
