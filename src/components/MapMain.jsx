@@ -33,7 +33,7 @@ const MapMain = () => {
 				[lat + 0.0004, lng + 0.0004],
 			];
 
-			mapRef.current.fitBounds(bbox, { padding: 40, duration: 1000 });
+			mapRef.current.fitBounds(bbox, { padding: 40, duration: 2000 });
 		}
 	}, [popupInfo]);
 
