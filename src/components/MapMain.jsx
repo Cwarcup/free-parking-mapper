@@ -36,11 +36,17 @@ const MapMain = () => {
 				[lat + 0.0004, lng + 0.0004],
 			];
 
-			// 	// fit the map to the bounding box
-
 			mapRef.current.fitBounds(bbox, { padding: 40, duration: 1000 });
 		}
 	}, [popupInfo]);
+
+	const payByPhoneClipboard = (e) => {
+		e.preventDefault();
+		navigator.clipboard.writeText(popupInfo.fields.pay_phone);
+		alert(
+			`Copied ${popupInfo.fields.pay_phone} to clipboard. Visit https://www.paybyphone.com/ to pay your meter.`
+		);
+	};
 
 	return (
 		<>
@@ -75,7 +81,10 @@ const MapMain = () => {
 							<p className="mb-2 text-xl font-medium text-gray-100">
 								{popupInfo.fields.geo_local_area}
 							</p>
-							<p className="text-gray-100">
+							<p
+								className="text-gray-100"
+								onClick={(e) => payByPhoneClipboard(e)}
+							>
 								PayByPhone: {popupInfo.fields.pay_phone}
 							</p>
 							<p className="text-gray-100">{price(popupInfo.fields)}</p>
