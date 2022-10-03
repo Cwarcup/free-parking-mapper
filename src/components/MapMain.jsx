@@ -44,7 +44,7 @@ const MapMain = () => {
 				mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
 				{...viewState}
 				onMove={(evt) => setViewState(evt.viewState)}
-				style={{ width: "fit", height: "500px" }}
+				style={{ width: "fit", height: "50vh" }}
 				mapStyle="mapbox://styles/mapbox/streets-v11"
 			>
 				<GeolocateControl position="top-left" />

@@ -61,7 +61,7 @@ function App() {
 												id="dashboard-main"
 												className="h-100vh overflow-auto px-4 pt-4 md:pt-10 pb-[100px]"
 											>
-												<div className="flex flex-col items-center gap-x-4 gap-y-2">
+												<div className="flex flex-col items-center gap-x-4 gap-y-4">
 													<SingleCompWrapper size={"w-full"}>
 														<MapMain />
 													</SingleCompWrapper>

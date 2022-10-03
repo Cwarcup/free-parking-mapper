@@ -51,8 +51,9 @@ const MapPopup = ({ latitude, longitude, onClose, popupData }) => {
 							PayByPhone: {popupData.payPhone}
 						</p>
 					}
-					position="right center"
+					position="bottom center"
 					closeOnDocumentClick={true}
+					closeOnEscape={true}
 					onOpen={(e) => payByPhoneClipboard(e)}
 				>
 					<p>Copied {popupData.payPhone} to clipboard!</p>
