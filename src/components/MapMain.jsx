@@ -10,6 +10,7 @@ import {
 	SearchContext,
 	PopupInfoContext,
 	MarkerDataContext,
+	SearchInfoContext,
 } from "../helpers/context";
 import MeterMarker from "./MeterMarker";
 import SearchMarker from "./SearchMarker";
@@ -20,6 +21,7 @@ const MapMain = () => {
 	const { searchResults } = useContext(SearchContext);
 	const { popupInfo, setPopupInfo } = useContext(PopupInfoContext);
 	const { markerData } = useContext(MarkerDataContext);
+	const { searchInfo } = useContext(SearchInfoContext);
 
 	const mapRef = useRef();
 
@@ -35,7 +37,19 @@ const MapMain = () => {
 
 			mapRef.current.fitBounds(bbox, { padding: 40, duration: 2000 });
 		}
-	}, [popupInfo]);
+
+		if (searchInfo) {
+			const lat = searchInfo.latitude;
+			const lng = searchInfo.longitude;
+
+			const bbox = [
+				[lat - 0.0004, lng - 0.0004],
+				[lat + 0.0004, lng + 0.0004],
+			];
+
+			mapRef.current.fitBounds(bbox, { padding: 40, duration: 2000 });
+		}
+	}, [popupInfo, searchInfo]);
 
 	return (
 		<>
