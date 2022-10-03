@@ -1,6 +1,5 @@
 import { useContext, useEffect, useRef } from "react";
 import Map, {
-	Popup,
 	GeolocateControl,
 	FullscreenControl,
 	NavigationControl,
@@ -12,11 +11,9 @@ import {
 	PopupInfoContext,
 	MarkerDataContext,
 } from "../helpers/context";
-import SearchLayer from "./SearchLayer";
 import MeterMarker from "./MeterMarker";
-import price from "../helpers/price";
 import SearchMarker from "./SearchMarker";
-import bbox from "@turf/bbox";
+import MapPopup from "./MapPopup";
 
 const MapMain = () => {
 	const { viewState, setViewState } = useContext(ViewContext);
@@ -40,14 +37,6 @@ const MapMain = () => {
 		}
 	}, [popupInfo]);
 
-	const payByPhoneClipboard = (e) => {
-		e.preventDefault();
-		navigator.clipboard.writeText(popupInfo.fields.pay_phone);
-		alert(
-			`Copied ${popupInfo.fields.pay_phone} to clipboard. Visit https://www.paybyphone.com/ to pay your meter.`
-		);
-	};
-
 	return (
 		<>
 			<Map
@@ -70,26 +59,16 @@ const MapMain = () => {
 				)}
 				<MeterMarker distance={markerData.distance} rows={markerData.rows} />
 				{popupInfo && (
-					<Popup
+					<MapPopup
 						latitude={popupInfo.fields.geom.coordinates[1]}
 						longitude={popupInfo.fields.geom.coordinates[0]}
 						onClose={() => setPopupInfo(false)}
-						anchor="bottom"
-						className="flex flex-col items-center rounded-3xl text-center p-3"
-					>
-						<div className="m-2">
-							<p className="mb-2 text-xl font-medium text-gray-100">
-								{popupInfo.fields.geo_local_area}
-							</p>
-							<p
-								className="text-gray-100"
-								onClick={(e) => payByPhoneClipboard(e)}
-							>
-								PayByPhone: {popupInfo.fields.pay_phone}
-							</p>
-							<p className="text-gray-100">{price(popupInfo.fields)}</p>
-						</div>
-					</Popup>
+						popupData={{
+							geoLocalArea: popupInfo.fields.geo_local_area,
+							payPhone: popupInfo.fields.pay_phone,
+							price: popupInfo.fields,
+						}}
+					/>
 				)}
 			</Map>
 		</>
