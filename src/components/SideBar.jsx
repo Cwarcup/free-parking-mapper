@@ -2,6 +2,7 @@ import avatar from "../images/avatar.jpg";
 import SearchInput from "./SearchInput";
 import { BiSearch } from "react-icons/bi";
 import SearchList from "./SearchList";
+import { BsFillGrid3X3GapFill } from "react-icons/bs";
 
 const SideBar = () => {
 	return (
@@ -31,12 +32,12 @@ const SideBar = () => {
 					aria-label="Sidebar Navigation"
 					className="peer-checked:w-64 left-0 z-10 flex h-screen w-0 flex-col overflow-hidden bg-gray-700 text-white transition-all md:h-screen md:w-64 lg:w-72"
 				>
-					<div className="bg-slate-800 mt-5 py-4 pl-10 md:mt-10">
+					<div className="bg-slate-800 mt-5 py-4 pl-16 md:mt-10">
 						<span className="">
-							<span className="mr-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 align-bottom text-2xl font-bold">
-								P
-							</span>
-							<span className="text-xl">ark Buddy</span>
+							<span className="text-xl">Pay</span>
+							<span className="text-xl text-lime-500">By</span>
+							<span className="text-xl">Fonie</span>
+							<BsFillGrid3X3GapFill className="inline-block h-6 w-6 text-lime-500 ml-3" />
 						</span>
 					</div>
 					{/* DONT DELETE ABOVE */}
