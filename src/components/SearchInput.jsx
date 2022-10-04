@@ -40,6 +40,7 @@ const SearchInput = () => {
 	return (
 		<>
 			<input
+				spellcheck="false"
 				type="search"
 				placeholder="Search a location"
 				value={search}

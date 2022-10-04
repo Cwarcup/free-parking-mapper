@@ -57,20 +57,24 @@ const SearchList = () => {
 	// used to show more results, disabled if there are no more results
 	const loadMoreBtn = (
 		<button
-			className="flex flex-col items-center focus:bg-slate-600 hover:bg-slate-600 w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none"
+			className="flex flex-col items-center w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none"
 			onClick={() => setResultLength(resultLength + 3)}
 		>
-			<p className="text-gray-100">Load More</p>
+			<p className="relative mt-4 rounded-lg border-2 border-lime-600 bg-lime-600 px-6 py-2 font-medium text-white transition hover:translate-y-1">
+				Load More
+			</p>
 		</button>
 	);
 
 	// used to show less results, disabled if there are no less results
 	const loadLessBtn = (
 		<button
-			className="flex flex-col items-center focus:bg-slate-600 hover:bg-slate-600 w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none"
+			className="flex flex-col items-center w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none"
 			onClick={() => setResultLength(resultLength - 3)}
 		>
-			<p className="text-gray-100">Load Less</p>
+			<p className="relative mt-4 rounded-lg border-2 border-lime-600 bg-lime-600 px-6 py-2 font-medium text-white transition hover:-translate-y-1">
+				Load Less
+			</p>
 		</button>
 	);
 
