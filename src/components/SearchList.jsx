@@ -8,22 +8,26 @@ const SearchList = () => {
 
 	const [list, setList] = useState([]);
 
-	console.log("searchResults", searchResults);
+	// state for clicked item
+	const [clickedItem, setClickedItem] = useState(null);
 
 	useEffect(() => {
 		if (searchResults) {
 			const listItems = searchResults.features.map((result, index) => {
 				return (
 					<li key={`search-result-${index}`}>
-						<button className="flex flex-col items-center focus:bg-slate-600 hover:bg-slate-600 w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+						<button
+							className="flex flex-col items-center focus:bg-slate-600 hover:bg-slate-600 w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none"
+							onClick={() => {
+								setClickedItem(result);
+							}}
+						>
 							<p className="text-gray-100 ">{result.text}</p>
 							<p className="text-gray-100">{result.properties.address}</p>
 						</button>
 					</li>
 				);
 			});
-
-			console.log("listItems", listItems);
 
 			setList(listItems);
 		}
@@ -49,10 +53,19 @@ const SearchList = () => {
 		</button>
 	);
 
+	// function to update the clicked item state
+	const updateClickedItem = (item) => {
+		setClickedItem(item);
+	};
+
+	console.log("clickedItem", clickedItem);
+
 	return (
-		<ul className="mt-8 space-y-3 md:mt-20">
+		<ul>
 			{list.slice(0, resultLength)}
-			{resultLength < searchResults.features.length && loadMoreBtn}
+			{searchResults.length > 0 &&
+				resultLength < searchResults.features.length &&
+				loadMoreBtn}
 			{resultLength > 3 && loadLessBtn}
 		</ul>
 	);
