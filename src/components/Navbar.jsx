@@ -26,30 +26,6 @@ const Navbar = () => {
 					<BiSearch className="absolute left-2 block h-5 w-5 text-gray-400" />
 					<SearchInput />
 				</div>
-
-				<ul className="mx-auto mt-4 flex space-x-6 sm:mx-5 sm:mt-0">
-					<li className="">
-						<button
-							className="flex h-8 w-8 items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow"
-							onClick={() => {
-								handleNewViewState();
-							}}
-							alt="Current Location"
-						>
-							<BiCurrentLocation />
-						</button>
-					</li>
-					<li className="">
-						<button className="flex h-8 w-8 items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow">
-							<BiUserCircle />
-						</button>
-					</li>
-					<li className="">
-						<button className="flex h-8 w-8 items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow">
-							<FiSettings />
-						</button>
-					</li>
-				</ul>
 			</div>
 		</header>
 	);

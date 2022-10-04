@@ -67,7 +67,9 @@ function App() {
 										>
 											<SideBar />
 											<div className="flex h-full w-full flex-col">
-												<Navbar />
+												<div className="hide-on-desktop">
+													<Navbar />
+												</div>
 												<div className="h-full overflow-auto pl-0 md:pl-10">
 													<main
 														id="dashboard-main"
