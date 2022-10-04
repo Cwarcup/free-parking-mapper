@@ -20,7 +20,7 @@ const SearchMarker = ({ data }) => {
 		});
 	};
 
-	console.log(searchInfo);
+	console.log("marker", marker);
 
 	// create array of markers for each feature in data
 	const markers = data.features.map((feature, index) => {

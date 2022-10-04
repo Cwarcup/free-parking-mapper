@@ -1,7 +1,10 @@
-import React from "react";
 import avatar from "../images/avatar.jpg";
+import SearchInput from "./SearchInput";
+import { BiSearch } from "react-icons/bi";
+import SearchList from "./SearchList";
 
 const SideBar = () => {
+
 	return (
 		<>
 			<aside className="fixed z-50 md:relative">
@@ -34,9 +37,15 @@ const SideBar = () => {
 							<span className="mr-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 align-bottom text-2xl font-bold">
 								P
 							</span>
-							<span className="text-xl">arking Helper</span>
+							<span className="text-xl">ark Buddy</span>
 						</span>
 					</div>
+					{/* DONT DELETE ABOVE */}
+					<div className="relative mx-4 flex items-center justify-between rounded-md mt-5 text-black ">
+						<BiSearch className="absolute left-2 block h-5 w-5 text-gray-400" />
+						<SearchInput />
+					</div>
+					<SearchList />
 					<ul className="mt-8 space-y-3 md:mt-20">
 						<li className="relative">
 							<button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
