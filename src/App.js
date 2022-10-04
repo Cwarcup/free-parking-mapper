@@ -13,13 +13,10 @@ import {
 import MapMain from "./components/MapMain";
 import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
-import RowsSlider from "./components/RowsSlider";
 import SingleCompWrapper from "./components/SingleCompWrapper";
-import MeterTable from "./components/MeterTable";
-import MeterNotSelected from "./components/MeterNotSelected";
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
-import FilterMetersByPrice from "./components/FilterMetersByPrice";
+import MeterContent from "./components/MeterContent";
 
 // @ts-ignore
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -78,30 +75,8 @@ function App() {
 														<div className="flex flex-col items-center gap-x-4 gap-y-4">
 															<SingleCompWrapper size={"w-full"}>
 																<MapMain />
+																<MeterContent />
 															</SingleCompWrapper>
-															<div className="flex flex-row flex-wrap gap-3 justify-center md:justify-start">
-																<SingleCompWrapper size={"w-fit h-fit"}>
-																	<RowsSlider />
-																</SingleCompWrapper>
-																<SingleCompWrapper
-																	size={"w-fit h-[117px] sm:h-[181px] z-30"}
-																>
-																	<FilterMetersByPrice />
-																</SingleCompWrapper>
-																<div className="col-span-2">
-																	<SingleCompWrapper
-																		size={
-																			"h-fit w-96 lg:w-fit sm:w-[450px] md:w-[550px]"
-																		}
-																	>
-																		{popupInfo ? (
-																			<MeterTable />
-																		) : (
-																			<MeterNotSelected />
-																		)}
-																	</SingleCompWrapper>
-																</div>
-															</div>
 														</div>
 													</main>
 												</div>

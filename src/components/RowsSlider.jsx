@@ -33,36 +33,33 @@ const RowsSlider = () => {
 
 	return (
 		<>
-			<div className="flex flex-col items-center max-w-xs">
-				<label
-					htmlFor="minmax-range"
-					className="my-2 text-sm font-normal text-gray-500"
-				>
-					Number of Meters
-				</label>
+			<div className="flex items-center max-w-xs gap-4 ">
 				<input
 					type="range"
 					min="1"
-					max="100"
+					max="101"
 					step="10"
 					value={rows}
 					onChange={(e) => handleRowsChange(e)}
 					disabled={disabled}
+					className="w-[100px]"
 				/>
-				<label
-					htmlFor="select-all"
-					className="my-2 text-sm font-normal text-gray-500"
-				>
-					Display All
-				</label>
-				<input
-					type="checkbox"
-					id="select-all"
-					name="select-all"
-					value="10000"
-					checked={checked}
-					onChange={(e) => handleRowsMax(e)}
-				/>
+				<div className="flex justify-center ">
+					<label
+						htmlFor="select-all"
+						className="mr-1 sm:mr-2 my-2 text-sm font-normal text-gray-500"
+					>
+						Display All
+					</label>
+					<input
+						type="checkbox"
+						id="select-all"
+						name="select-all"
+						value="10000"
+						checked={checked}
+						onChange={(e) => handleRowsMax(e)}
+					/>
+				</div>
 			</div>
 		</>
 	);

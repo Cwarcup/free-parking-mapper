@@ -40,7 +40,6 @@ const SideBar = () => {
 							<span className="text-xl">Fonie</span>
 						</span>
 					</div>
-					{/* DONT DELETE ABOVE */}
 					<div className="relative mx-4 flex items-center justify-between rounded-md mt-5 text-black hide-on-mobile">
 						<BiSearch className="absolute left-2 block h-5 w-5 text-gray-400" />
 						<SearchInput />

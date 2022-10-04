@@ -4,7 +4,6 @@ import {
 	SelectedItemContext,
 	SearchInfoContext,
 } from "../helpers/context";
-import selectedSVG from "../images/selectedItemSvg.svg";
 
 const SearchList = () => {
 	const { searchResults } = useContext(SearchContext);
