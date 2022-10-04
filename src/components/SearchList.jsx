@@ -1,15 +1,13 @@
 import { useContext, useState, useEffect } from "react";
-import { SearchContext } from "../helpers/context";
+import { SearchContext, SelectedItemContext } from "../helpers/context";
 
 const SearchList = () => {
 	const { searchResults } = useContext(SearchContext);
+	const { setSelectedItem } = useContext(SelectedItemContext);
 
 	const [resultLength, setResultLength] = useState(3);
 
 	const [list, setList] = useState([]);
-
-	// state for clicked item
-	const [clickedItem, setClickedItem] = useState(null);
 
 	useEffect(() => {
 		if (searchResults) {
@@ -19,7 +17,7 @@ const SearchList = () => {
 						<button
 							className="flex flex-col items-center focus:bg-slate-600 hover:bg-slate-600 w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none"
 							onClick={() => {
-								setClickedItem(result);
+								setSelectedItem(result);
 							}}
 						>
 							<p className="text-gray-100 ">{result.text}</p>
@@ -53,17 +51,10 @@ const SearchList = () => {
 		</button>
 	);
 
-	// function to update the clicked item state
-	const updateClickedItem = (item) => {
-		setClickedItem(item);
-	};
-
-	console.log("clickedItem", clickedItem);
-
 	return (
 		<ul>
 			{list.slice(0, resultLength)}
-			{searchResults.length > 0 &&
+			{searchResults &&
 				resultLength < searchResults.features.length &&
 				loadMoreBtn}
 			{resultLength > 3 && loadLessBtn}

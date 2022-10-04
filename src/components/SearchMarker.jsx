@@ -1,17 +1,19 @@
 import { Marker, Popup } from "react-map-gl";
 import { FaMapMarker } from "react-icons/fa";
 import { useState, useContext } from "react";
-import { SearchInfoContext } from "../helpers/context";
+import { SearchInfoContext, SelectedItemContext } from "../helpers/context";
 
 const SearchMarker = ({ data }) => {
-	const [marker, setMarker] = useState(false);
+	// const [marker, setMarker] = useState(false);
 
 	const { searchInfo, setSearchInfo } = useContext(SearchInfoContext);
+
+	const { selectedItem, setSelectedItem } = useContext(SelectedItemContext);
 
 	console.log(searchInfo);
 
 	const setPopupInfo = (e) => {
-		setMarker(e);
+		setSelectedItem(e);
 		setSearchInfo({
 			latitude: e.geometry.coordinates[0],
 			longitude: e.geometry.coordinates[1],
@@ -20,7 +22,7 @@ const SearchMarker = ({ data }) => {
 		});
 	};
 
-	console.log("marker", marker);
+	console.log("selectedItem", selectedItem);
 
 	// create array of markers for each feature in data
 	const markers = data.features.map((feature, index) => {
@@ -37,21 +39,23 @@ const SearchMarker = ({ data }) => {
 				>
 					<FaMapMarker className="text-3xl text-blue-500" />
 				</Marker>
-				{marker && (
+				{selectedItem && (
 					<Popup
 						key={`search-popup-marker-${index}`}
-						latitude={marker.center[1]}
-						longitude={marker.center[0]}
-						onClose={() => setMarker(false)}
+						latitude={selectedItem.center[1]}
+						longitude={selectedItem.center[0]}
+						onClose={() => setSelectedItem(false)}
 						anchor="bottom"
 						className="flex flex-col items-center rounded-3xl text-center p-3"
 					>
 						<div className="m-2">
 							<p className="mb-2 text-base font-medium text-gray-100">
-								{marker.text}
+								{selectedItem.text}
 							</p>
-							<p className="text-gray-100">{marker.properties.address}</p>
-							<p className="text-gray-100">{marker.properties.category}</p>
+							<p className="text-gray-100">{selectedItem.properties.address}</p>
+							<p className="text-gray-100">
+								{selectedItem.properties.category}
+							</p>
 						</div>
 					</Popup>
 				)}

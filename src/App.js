@@ -8,6 +8,7 @@ import {
 	MarkerDataContext,
 	FilterContext,
 	SearchInfoContext,
+	SelectedItemContext,
 } from "./helpers/context";
 import MapMain from "./components/MapMain";
 import Navbar from "./components/Navbar";
@@ -48,6 +49,8 @@ function App() {
 
 	const [searchInfo, setSearchInfo] = useState(null);
 
+	const [selectedItem, setSelectedItem] = useState(null);
+
 	return (
 		<>
 			<UserContext.Provider value={{ user, setUser }}>
@@ -59,45 +62,49 @@ function App() {
 									<SearchInfoContext.Provider
 										value={{ searchInfo, setSearchInfo }}
 									>
-										<SideBar />
-										<div className="flex h-full w-full flex-col">
-											<Navbar />
-											<div className="h-full overflow-auto pl-0 md:pl-10">
-												<main
-													id="dashboard-main"
-													className="h-100vh overflow-auto px-4 pt-4 md:pt-10 pb-[100px]"
-												>
-													<div className="flex flex-col items-center gap-x-4 gap-y-4">
-														<SingleCompWrapper size={"w-full"}>
-															<MapMain />
-														</SingleCompWrapper>
-														<div className="flex flex-row flex-wrap gap-3 justify-center md:justify-start">
-															<SingleCompWrapper size={"w-fit h-fit"}>
-																<RowsSlider />
+										<SelectedItemContext.Provider
+											value={{ selectedItem, setSelectedItem }}
+										>
+											<SideBar />
+											<div className="flex h-full w-full flex-col">
+												<Navbar />
+												<div className="h-full overflow-auto pl-0 md:pl-10">
+													<main
+														id="dashboard-main"
+														className="h-100vh overflow-auto px-4 pt-4 md:pt-10 pb-[100px]"
+													>
+														<div className="flex flex-col items-center gap-x-4 gap-y-4">
+															<SingleCompWrapper size={"w-full"}>
+																<MapMain />
 															</SingleCompWrapper>
-															<SingleCompWrapper
-																size={"w-fit h-[117px] sm:h-[181px] z-30"}
-															>
-																<FilterMetersByPrice />
-															</SingleCompWrapper>
-															<div className="col-span-2">
-																<SingleCompWrapper
-																	size={
-																		"h-fit w-96 lg:w-fit sm:w-[450px] md:w-[550px]"
-																	}
-																>
-																	{popupInfo ? (
-																		<MeterTable />
-																	) : (
-																		<MeterNotSelected />
-																	)}
+															<div className="flex flex-row flex-wrap gap-3 justify-center md:justify-start">
+																<SingleCompWrapper size={"w-fit h-fit"}>
+																	<RowsSlider />
 																</SingleCompWrapper>
+																<SingleCompWrapper
+																	size={"w-fit h-[117px] sm:h-[181px] z-30"}
+																>
+																	<FilterMetersByPrice />
+																</SingleCompWrapper>
+																<div className="col-span-2">
+																	<SingleCompWrapper
+																		size={
+																			"h-fit w-96 lg:w-fit sm:w-[450px] md:w-[550px]"
+																		}
+																	>
+																		{popupInfo ? (
+																			<MeterTable />
+																		) : (
+																			<MeterNotSelected />
+																		)}
+																	</SingleCompWrapper>
+																</div>
 															</div>
 														</div>
-													</div>
-												</main>
+													</main>
+												</div>
 											</div>
-										</div>
+										</SelectedItemContext.Provider>
 									</SearchInfoContext.Provider>
 								</FilterContext.Provider>
 							</MarkerDataContext.Provider>
