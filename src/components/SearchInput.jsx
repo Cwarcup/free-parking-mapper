@@ -4,7 +4,7 @@ import axios from "axios";
 
 const SearchInput = () => {
 	const { viewState } = useContext(ViewContext);
-	const { searchResults, setSearchResults } = useContext(SearchContext);
+	const { setSearchResults } = useContext(SearchContext);
 
 	// used for get request
 	const [search, setSearch] = useState("");

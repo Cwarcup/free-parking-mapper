@@ -50,6 +50,7 @@ const MeterMarker = ({ distance, rows, popupFunction }) => {
 
 		return () => clearTimeout(getData);
 		// updates when viewState changes
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [viewState, markerData, filter]);
 
 	return <>{marker}</>;

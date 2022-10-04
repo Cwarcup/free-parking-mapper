@@ -1,16 +1,11 @@
 import { Marker, Popup } from "react-map-gl";
 import { FaMapMarker } from "react-icons/fa";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { SearchInfoContext, SelectedItemContext } from "../helpers/context";
 
 const SearchMarker = ({ data }) => {
-	// const [marker, setMarker] = useState(false);
-
-	const { searchInfo, setSearchInfo } = useContext(SearchInfoContext);
-
+	const { setSearchInfo } = useContext(SearchInfoContext);
 	const { selectedItem, setSelectedItem } = useContext(SelectedItemContext);
-
-	console.log(searchInfo);
 
 	const setPopupInfo = (e) => {
 		setSelectedItem(e);
@@ -21,8 +16,6 @@ const SearchMarker = ({ data }) => {
 			category: e.properties.category,
 		});
 	};
-
-	console.log("selectedItem", selectedItem);
 
 	// create array of markers for each feature in data
 	const markers = data.features.map((feature, index) => {

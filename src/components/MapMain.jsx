@@ -25,6 +25,7 @@ const MapMain = () => {
 
 	const mapRef = useRef();
 
+
 	useEffect(() => {
 		if (popupInfo) {
 			setSearchInfo(null);
@@ -51,6 +52,7 @@ const MapMain = () => {
 
 			mapRef.current.fitBounds(bbox, { padding: 40, duration: 2000 });
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [popupInfo, searchInfo]);
 
 	return (

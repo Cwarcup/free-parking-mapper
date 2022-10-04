@@ -6,10 +6,6 @@ const MapPopup = ({ latitude, longitude, onClose, popupData }) => {
 	const payByPhoneClipboard = (e) => {
 		e.preventDefault();
 		navigator.clipboard.writeText(popupData.payPhone);
-
-		console.log(
-			`Copied ${popupData.payPhone} to clipboard. Visit https://www.paybyphone.com/ to pay your meter.`
-		);
 	};
 
 	const contentStyle = {

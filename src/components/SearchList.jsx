@@ -1,12 +1,16 @@
 import { useContext, useState, useEffect } from "react";
-import { SearchContext, SelectedItemContext } from "../helpers/context";
+import {
+	SearchContext,
+	SelectedItemContext,
+	SearchInfoContext,
+} from "../helpers/context";
 
 const SearchList = () => {
 	const { searchResults } = useContext(SearchContext);
 	const { setSelectedItem } = useContext(SelectedItemContext);
+	const { setSearchInfo, searchInfo } = useContext(SearchInfoContext);
 
 	const [resultLength, setResultLength] = useState(3);
-
 	const [list, setList] = useState([]);
 
 	useEffect(() => {
@@ -18,6 +22,13 @@ const SearchList = () => {
 							className="flex flex-col items-center focus:bg-slate-600 hover:bg-slate-600 w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none"
 							onClick={() => {
 								setSelectedItem(result);
+								setSearchInfo({
+									...searchInfo,
+									latitude: result.geometry.coordinates[0],
+									longitude: result.geometry.coordinates[1],
+									address: result.properties.address,
+									category: result.properties.category,
+								});
 							}}
 						>
 							<p className="text-gray-100 ">{result.text}</p>
@@ -29,6 +40,7 @@ const SearchList = () => {
 
 			setList(listItems);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [searchResults]);
 
 	// used to show more results, disabled if there are no more results
