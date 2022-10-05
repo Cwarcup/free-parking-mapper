@@ -10,7 +10,7 @@ const SideBar = () => {
 			<aside className="fixed z-50 md:relative">
 				<input type="checkbox" className="peer hidden" id="sidebar-open" />
 				<label
-					className="peer-checked:rounded-full peer-checked:p-2 peer-checked:right-6 peer-checked:bg-gray-600 peer-checked:text-white absolute top-8 z-20 mx-4 cursor-pointer md:hidden"
+					className="peer-checked:rounded-full peer-checked:p-2 peer-checked:right-6 peer-checked:bg-gray-600 peer-checked:text-white absolute top-8 z-20 mx-2 cursor-pointer md:hidden"
 					htmlFor="sidebar-open"
 				>
 					<svg
@@ -32,7 +32,7 @@ const SideBar = () => {
 					aria-label="Sidebar Navigation"
 					className="peer-checked:w-64 left-0 z-10 flex h-screen w-0 flex-col overflow-hidden bg-gray-700 text-white transition-all md:h-screen md:w-64 lg:w-72"
 				>
-					<div className="bg-slate-800 mt-5 py-4 pl-20 md:mt-10 flex">
+					<div className="bg-slate-800 mt-5 py-4 pl-6 md:pl-12 md:mt-10 flex">
 						<BsFillGrid3X3GapFill className="inline-block h-6 w-6 text-lime-500 mr-2" />
 						<span>
 							<span className="text-xl">Pay</span>
