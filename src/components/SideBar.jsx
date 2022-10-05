@@ -2,7 +2,12 @@ import avatar from "../images/avatar.jpg";
 import SearchInput from "./SearchInput";
 import { BiSearch } from "react-icons/bi";
 import SearchList from "./SearchList";
-import { BsFillGrid3X3GapFill } from "react-icons/bs";
+import {
+	BsFillGrid3X3GapFill,
+	BsLinkedin,
+	BsGithub,
+	BsFillFilePersonFill,
+} from "react-icons/bs";
 
 const SideBar = () => {
 	return (
@@ -48,7 +53,7 @@ const SideBar = () => {
 						<SearchList />
 					</div>
 
-					<div className="my-6 mt-auto ml-10 flex cursor-pointer">
+					<div className="my-6 mt-auto flex cursor-pointer justify-center items-center">
 						<div>
 							<img
 								className="h-12 w-12 rounded-full"
@@ -57,8 +62,21 @@ const SideBar = () => {
 							/>
 						</div>
 						<div className="ml-3">
-							<p className="font-medium">Curtis Warcup</p>
+							<a className="font-medium" href="https://github.com/cwarcup">
+								Curtis Warcup
+							</a>
 							<p className="text-sm text-gray-300">Vancouver, Canada</p>
+							<div className="flex justify-start mt-1.5">
+								<a href="https://www.linkedin.com/in/curtiswarcup/">
+									<BsLinkedin className="w-8 ml-[-7px] hover:text-blue-500" />
+								</a>
+								<a href="https://github.com/cwarcup">
+									<BsGithub className="w-8 hover:text-green-600" />
+								</a>
+								<a href="https://cwarcup.com/">
+									<BsFillFilePersonFill className="w-8 hover:text-purple-500" />
+								</a>
+							</div>
 						</div>
 					</div>
 				</nav>
